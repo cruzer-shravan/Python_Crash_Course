@@ -1,0 +1,113 @@
+# shift enter --> executes the line of code
+# Ctrl + F5 --> activates python debugger and runs entire code from beginning to end
+# Ctrl + / --> comment single line
+# exit (exits terminal)
+# Ctrl + \ - opens a duplicate window
+# cd - change directory
+
+'''VARIABLES'''
+
+# Running Variables.py
+print("Hello Python world!")   # Syntax highlighting feature - "Hello Python world!" phrase in different color
+
+message = "Hello Python world!"
+print(message)
+
+message = "Hello Python Crash Course World!"    # variable value changed
+print(message)
+
+# Variable names can contain only letters, numbers and underscore. They should be short and descriptive
+# They start with letter or an underscore but not with number.
+# Spaces are not allowed but underscores can be used to separate words e.g. good_morning_message
+# Avoid using Python Keywords and Built-in Functions
+
+
+'''STRINGS - A series of characters (anything inside the quotes)'''
+
+'I told my friend, "Python is my fav language" '
+"The langugage 'Python' is named after Monty Python, not the snake."
+"One of Python's strengths is its diverse and supportive comm unity."
+
+# Changing case in a string
+
+name = "hyderabad sunrisers"
+print(name)
+print(name.title())         # method title().
+
+# Method is an action that Python can perform on a piece of data. 
+# The dot (.) after name in name.title() tells Python to make the title() method act on the variable name.
+
+name = "Sunrisers Hyderabad"
+print(name.upper())
+print(name.lower())     # The lower() method is particularly useful for storing data.
+
+'''USING VARIABLES IN STRINGS'''
+
+first_name = "william"
+last_name = "shakespeare"
+
+full_name = f"{first_name} {last_name}"     # f-strings. 
+# The f is for format, because Python formats the string by replacing 
+# the name of any variable in braces with its value.
+
+print(full_name)
+print(full_name.upper())
+print(full_name.lower())
+
+print(f"Hello, {full_name.title()}")
+
+message = f"Hello, {full_name.upper()}"
+print(message)
+
+
+'''Adding Whitespace to Strings with TABS or NEWLINES'''
+# In programming, whitespace refers to any nonprinting characters, such as SPACES, TABs, and END-of-LINE symbols.
+# You can use whitespace to organize your output so it’s easier for users to read.
+
+print("Python")
+print("\tPython")       # add a TAB
+print("Langugaes\nPython\nC#\nJavaScript")  # add a NEWLINE
+print("Langugaes\n\tPython\n\tC#\n\tJavaScript")  # add a NEWLINE with TAB
+
+
+'''STRIPPING WHITESPACE'''
+
+# Extra whitespace can be confusing in your programs. Eg. checking people's username
+# Python detects the extra space in 'python ' and considers it significant unless you tell it otherwise.
+
+fav_language = "python "
+fav_language.rstrip()       # rstrip method - NO whitespace exists at the right side of a string
+fav_language
+
+# To remove the whitespace from the string permanently - associate stripped value with the variable name
+fav_language = fav_language.rstrip()    
+fav_language
+
+fav_language1 = " JavaScript"
+fav_language1
+fav_language1 = fav_language.lstrip()       # lstrip method - No whitespace exists at the left side of a string
+fav_language1
+
+# Experimenting with these stripping functions can help you become familiar with manipulating strings.
+# In the real world, these stripping functions are used most often to clean up user input 
+# before it’s stored in a program.
+
+fav_language2 = " C++ "
+fav_language2
+fav_language2.strip()   # strip method - strips both ends
+
+
+'''REMOVING PREFIXES'''
+# Consider a URL with the common prefix "https://"".
+# we want to remove this prefix, so we can focus on just the part of the URL that users need to enter into an address bar
+# When you see a URL in an address bar and the https:// part isn’t shown,
+# the browser is probably using a method like removeprefix() behind the scenes.
+
+google_url = 'https://www.google.com'
+google_url.removeprefix('https://')     # removeprefix() leaves the original string unchanged
+
+simple_url = google_url.removeprefix('https://')
+simple_url
+
+'''Avoiding Syntax Errors with Strings - Refer Appendix C of book'''
+# A syntax error occurs when Python doesn’t recognize a section of your program as valid Python code
