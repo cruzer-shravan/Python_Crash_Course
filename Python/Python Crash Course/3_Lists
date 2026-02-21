@@ -93,3 +93,144 @@ print(f"My most expensive bicycle was {too_expensive.title()}")
 ''' remove() method deletes only the first occurrence of the value you specify. 
 If there’s a possibility the value appears more than once in the list, 
 you’ll need to use a loop to make sure all occurrences of the value are removed.'''
+
+
+# EXERCISE
+
+# 3.4. Guest list
+
+guests = ['vamsi', 'yogesh', 'manoj']
+print(f"Hey {guests[0]}, can you join for dinner tonight at 8PM?")
+print(f"Hey {guests[1]}, can you join for dinner tonight at 8PM?")
+print(f"Hey {guests[2]}, can you join for dinner tonight at 8PM?")
+
+# 3.5. Changing guest list
+
+cant_make_it = 'manoj'
+print(f"{cant_make_it.title()}, can't make it for dinner due busy schedule.")
+
+guests[2] = 'mahesh'
+print(guests)
+print(f"Hey {guests[2]}, can you join for dinner tonight at 8PM?")
+
+# 3.6.  More guests
+
+guests.insert(0, 'Priya')
+guests.insert(2, 'Preeti') 
+guests.append('Nisha')
+print(guests)
+
+for guest in guests:
+    print(f"Hey {guest.title()}, could you join for dinner at 8PM?")
+
+# 3.7.  Shrinking guest list
+
+print("Sorry, my new dinner table wont arrive on time for dinner, so i could invite just two guests.")
+
+print(guests)
+cant_invite = []
+cant_invite.append(guests.pop(4))
+cant_invite.append(guests.pop(2))
+cant_invite.append(guests.pop(1))
+cant_invite.append(guests.pop(0))
+print(cant_invite)
+
+sorry_message = "I cant host the dinner tonight due new dining table not delivered. Will invite soon :-)"
+for guest in cant_invite:
+    print(f"Sorry {guest.title()}, {sorry_message}")
+
+print(guests)
+
+shrinked_list = guests
+
+message = "I have two seats at dining table, you are one of them. Reach by 8PM!"
+for guest in shrinked_list:
+    print(f"Hey {guest.title()}, {message}")
+
+del guests[1]
+del guests[0]
+print(f"guest list = {guests}")
+
+
+'''ORGANIZING A LIST'''
+
+# Often, your lists will be created in an unpredictable order, 
+# because you can’t always control the order in which your users provide their data. 
+# Sometimes you’ll want to preserve the original order of your list,
+# and other times you’ll want to change the original order. 
+# Python provides a number of different ways to organize your lists, depending on the situation.
+
+'''sort() method - Sorting a List PERMANENTLY'''
+
+cars = ['maruti_suzuki', 'tata', 'mahinda', 'kia', 'bmw', 'audi', 'mercedes']
+cars.sort()     # The cars are now in alphabetical order, and we can never revert to the original order.
+print(cars) 
+
+cars.sort(reverse=True) # Order is permanently changed
+print(cars)
+
+
+'''sorted() function - Sorting a list Temporarily'''
+
+# It is used to maintain the original order of a list but present it in a sorted order.
+# It lets you display your list in a particular order, but doesn’t affect the actual order of the list.
+
+cars1 = ['maruti_suzuki', 'tata', 'mahinda', 'kia', 'bmw', 'audi', 'mercedes']
+print(f"Original list: {cars1}")
+print(f"Sorted list {sorted(cars1)}")
+
+# list still exists in its original order after the sorted() function
+print(f"Original list after sorted function: {cars1}")
+
+# Reverse sorted list
+print(f"Reversed the Sorted list {sorted(cars1, reverse=True)}")
+
+
+'''reverse() method - Reverse the original order of a list'''
+
+# reverse() doesnt sort backward alphabetically; it simply reverses the order of the list.
+
+cars2 = [ 'tata', 'kia', 'bmw', 'audi', 'mercedes']
+print(cars2.reverse())      # executes the reverse method and doesnt give any output
+print(cars2)
+
+# The reverse() method changes the order of a list permanently,
+# but you can revert to the original order anytime by applying reverse() to the same list a second time.
+
+'''LEN() FUNCTION'''
+
+print(len(cars))
+print(len(cars1))
+print(len(cars2))
+
+# Python counts the items in a list starting with one, 
+# so you shouldn’t run into any off-by-one errors when determining the length of a list.
+
+'''EXERCISE'''
+
+# 3.8.  SEEING THE WORLD
+
+places_to_visit = ['china', 'brazil', 'peru', 'mexico', 'italy', 'jordan']
+
+print(f"sorted list : {sorted(places_to_visit)}")
+print(f"original list: {places_to_visit}")
+
+places_to_visit.reverse()
+print(f"reverse list : {places_to_visit})")
+
+places_to_visit.reverse()
+print(f"revert to original list : {places_to_visit})")
+
+places_to_visit.sort()
+print(f"sort list : {places_to_visit})")
+
+places_to_visit.sort(reverse=True)
+print(f"reversed sort list : {places_to_visit})")
+
+
+
+
+'''Every Function: Think of things you could store in a list. 
+For example, you could make a list of mountains, rivers, countries, cities, languages.
+Write a program that creates a list containing these items and 
+then uses each function introduced in this chapter at least once'''
