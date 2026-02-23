@@ -1,0 +1,68 @@
+# Looping allows you to take the same action, or set of actions, with every item in a list.
+# Looping is important because it's one of the most common ways a computer automates repetitive tasks.
+
+magicians = ['alice', 'david', 'carolina']
+for magician in magicians:      # each element in the list is associated with the variable "magician"
+    print (magician)
+
+# TIP:  Choose a meaningful variable name that represents a single item from the list
+
+'''
+for cat in cats:
+for dog in dogs:
+for item in list_of_items:
+'''
+
+magicians = ['alice', 'david', 'carolina']
+for magician in magicians:      # each element in the list is associated with the variable "magician"
+    print (f"{magician.title()}, that was a great trick!")
+    print(f"I can't wait to see your next trick, {magician.title()}\n")
+print("Thank you. everyone. That was a great magic show.")
+
+'''AVOIDING INDENTATION ERRORS'''
+
+# It uses whitespace to force you to write neatly formatted code with a clear visual structure.
+# The indentation levels help you gain a general sense of the overall program's organisation.
+
+'''COMMON INDENATION ERRORS'''
+
+#1 Forgetting to indent
+
+#2 Logical error - Syntax is valid Python code, 
+#  but the code does not produce the desired result because a problem occurs in its logic.
+
+magicians = ['alice', 'david', 'carolina']
+for magician in magicians:      # each element in the list is associated with the variable "magician"
+    print (f"{magician.title()}, that was a great trick!")
+print(f"I can't wait to see your next trick, {magician.title()}\n")     # Prints only the last magician's name
+
+#3 Indenting unnecessarily
+message = "Hello, Python World!"
+    # print(message)    # Indentatin error: unexpected indent
+
+#4 Indenting unnecessarily after the loop
+
+for magician in magicians:      # each element in the list is associated with the variable "magician"
+    print (f"{magician.title()}, that was a great trick!")
+    print(f"I can't wait to see your next trick, {magician.title()}\n")
+    print("Thank you. everyone. That was a great magic show.")  # This line is printed with every iteration of for loop instead of once.
+
+#5 Forgetting the colon (Syntax error) - Colon tells Python to interpret the next line as the start of a loop.
+
+
+'''EXERCISES'''
+
+# 4.1.  Pizzas
+
+pizzas = ['cheese pizza', 'paneer pizza', 'pepperoni pizza']
+for pizza in pizzas:
+    print(f"I like {pizza}")
+print("I really love pizza!")
+
+# 4.2.  Animals
+
+animals = ['cat', 'dog', 'parakeet']
+
+for animal in animals:
+    print(f"A {animal} would make a great pet")
+print("Any of these animals would make a great pet!")
