@@ -188,3 +188,31 @@ friends_food.append('soya chunks')
 
 print(f"My foods are addition: {my_foods}")
 print(f"My friend foods are addition: {friends_food}")
+
+# friends_food = my_food, doesn't work because equal to would not produce two separate lists
+
+'''EXERCISES'''
+
+# 4.10  Slices
+
+print(f"The first three items in my food's list are: {my_foods[:3]}")
+print(f"The middle three items in my food's list are: {my_foods[1:4]}")
+print(f"The last three items in my food's list are: {my_foods[2:]}")
+
+
+# 4.11. My pizzas, Your pizzas
+
+my_pizzas = ['cheese pizza', 'paneer pizza', 'pepperoni pizza']
+friends_pizzas = my_pizzas[:]
+
+my_pizzas.append("chicken pizza")
+friends_pizzas.append("chicken fiesta")
+
+print("My favourite pizzas are:")
+for pizza in my_pizzas:
+    print(f"\t{pizza.title()}")
+
+print("My friends favourite pizzas are:")
+for pizza in friends_pizzas:
+    print(f"\t{pizza.title()}")
+

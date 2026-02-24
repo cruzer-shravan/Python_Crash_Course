@@ -1,0 +1,53 @@
+'''TUPLES - list of items that are immutable'''
+
+# Tuple looks just like a list, except you use parentheses instead of square brackets
+
+dimensions = (200, 50)
+print(dimensions[0])    # Syntax is same as used in list to access the element from a list
+print(dimensions[1])
+
+
+# dimensions[0] = 250     # TypeError: 'tuple' object does not support item assignment
+# This is beneficial because we want Python to raise an error when a line of code tries to change the dimensions of the rectangle.
+
+'''
+NOTE: Tuples are technically defined by the presence of a comma; the parentheses make them look neater and more readable.
+If you want to define a tuple with one element, you need to include a trailing comma:   my_t = (3,)
+It doesn’t often make sense to build a tuple with one element, but this can happen when tuples are generated automatically.
+'''
+
+'''LOOPING THROUGH ALL VALUES IN A TUPLE'''
+
+print("\nOriginal dimensions are:")
+for dimension in dimensions:
+    print(dimension)
+
+
+'''WRITING OVER A TUPLE'''
+
+# Although you can’t modify a tuple, you can assign a new value to a variable that represents a tuple.
+# For example, if we wanted to change the dimensions of this rectangle, we could redefine the entire tuple.
+
+dimensions = (400,100)
+print("\nModified dimensions are:")
+for dimension in dimensions:
+    print(dimension)
+
+
+'''EXERCISE'''
+
+# 4.13. BUFFET STYLE RESTAURANT
+
+buffet_menu = ('rice', 'dal', 'sambar', 'fry', 'curd')
+print("\nBuffet menu is as follows:")
+for item in buffet_menu:
+    print(item.title())
+
+# buffet_menu.append('curry')       # AttributeError: 'tuple' object has no attribute 'append'
+
+# buffet_menu[0] = 'curry'            # TypeError: 'tuple' object does not support item assignment
+
+buffet_menu = ('rice', 'dal', 'sambar', 'fry', 'curd', 'curry', 'sweet')
+print("\nAmmended Buffet menu is as follows:")
+for item in buffet_menu:
+    print(item.title())

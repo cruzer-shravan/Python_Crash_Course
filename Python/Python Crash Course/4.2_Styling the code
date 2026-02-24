@@ -1,0 +1,43 @@
+'''STYLING YOUR CODE'''
+
+'''The Style Guide'''
+
+# When someone wants to make a change to the Python language, they write a Python Enhancement Proposal (PEP).
+# PEP 8 is one of the oldest PEPs and is fairly lengthy, but much of it relates to more complex coding structures.
+
+# The Python style guide was written with the understanding that code is read more often than it is written.
+# You’ll write your code once and then start reading it as you begin debugging. When you add features to a program,
+# you’ll spend more time reading your code.
+
+# Python programmers will almost always encourage you to write code that’s easier to read.
+
+
+'''INDENTATION'''
+
+# PEP 8 recommends that you use four spaces per indentation level to improve readability while leaving room for multiple levels of indentation
+# Python interpreter gets confused when tabs are mixed with spaces unlike word document.
+# Mixing tabs and spaces in your file can cause problems that are very difficult to diagnose. 
+
+
+'''LINE LENGTH'''
+
+# Many Python programmers recommend that each line should be less than 80 characters. 
+# Historically, this guideline developed because most computers could fit only 79 characters on a single line in a terminal window.
+
+# PEP 8 also recommends that you limit all of your comments to 72 characters per line, 
+# because some of the tools that generate automatic documentation for larger projects 
+# add formatting characters at the beginning of each commented line.
+
+# The PEP 8 guidelines for line length are not set in stone, and some teams prefer a 99-character limit.
+
+
+'''BLANK SPACES'''
+
+# Blank lines won’t affect how your code runs, but they will affect the readability of your code.
+# The Python interpreter uses horizontal indentation to interpret the meaning of your code, but it disregards vertical spacing.
+
+'''
+NOTE:   In programming, spaces are preferred over tabs because spaces can be interpreted unambiguously by
+all tools that work with a code file. The width of tabs can be interpreted differently by different tools, 
+which leads to errors that can be extremely difficult to diagnose.
+'''
