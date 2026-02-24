@@ -66,3 +66,125 @@ animals = ['cat', 'dog', 'parakeet']
 for animal in animals:
     print(f"A {animal} would make a great pet")
 print("Any of these animals would make a great pet!")
+
+
+'''NUMERICAL LISTS - store a set of numbers'''
+# Eg: Temperatures, distances, population sizes or latitude and longitude values
+
+# range() function
+
+for value in range (1,5):
+    print(value)            # Another result of the off-by-one behaviour
+
+
+for value in range(6):
+    print(value)
+
+# Using range() to make a list of numbers
+    # wrap list() around a call to the range() function, output will be a list of numbers
+
+numbers = list(range(1,6))
+print(numbers)
+
+even_nums = list(range(2,11,2))    # third argument skip numbers in a given range
+print(even_nums)
+
+# Square numbers upto 10 
+
+squares = []
+for value in range(1,11):
+    squares.append(value**2)
+print(squares)
+
+
+'''SIMPLE STATISTICS'''
+
+digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+min(digits)
+max(digits)
+sum(digits)
+
+
+'''LIST COMPREHENSIONS - allow you to generate this same list in just one line of code'''
+
+# Note: Expression is defined in a set of square brackets and no colon is used
+
+squares = [value ** 2 for value in range (11,21)]   
+print(squares)
+
+'''EXERCISES'''
+
+# 4.3. Counting to Twenty
+
+for num in range(1,21):
+    print(num)
+
+
+# 4.4. One Million
+
+million = list(range(1, 1_000_001))
+# print(million)
+
+# for number in range(1, 1_000_001):
+#     print(number)                       # Ctrl + C --> interrupt the print command
+
+
+# 4.5.  Summing a million
+
+print(sum(million)) 
+
+# 4.6.  Odd Numbers
+
+odd_nums = [value for value in range(1,21,2)]
+for num in odd_nums:
+    print(num)
+
+# 4.7.  Threes
+
+threes = [value for value in range(3,31,3)]
+for num in threes:
+    print(num)
+
+# 4.8. & 4.9.  Cubes and comprehension
+
+cubes = [value**3 for value in range(1,11)]
+print(cubes)
+
+
+
+'''WORKING WITH PART OF A LIST'''
+
+# SLICING A LIST
+
+players = ['charles', 'martina', 'michael', 'adam', 'eli']
+print(players[0:3])
+print(players[1:4])
+
+print(players[:4])  # beginning of a list
+print(players[2:])  # upto end of a list
+
+print(players[-3:]) # Negative index [-3:-1] i.e. last three players
+
+# We can include third value in the brackets indicating a slice.
+# Third value decides number of items to skip between items in the specified range.
+
+
+'''LOOPING THROUGH A SLICE'''
+
+print("Here are the last three players in my team")
+for player in players[-3:]:
+    print(f"\t{player.title()}")
+
+'''COPYING A LIST'''
+
+my_foods = ['rice', 'dal', 'paneer', 'curd']
+print(f"My foods are: {my_foods}")
+
+friends_food = my_foods[:]
+print(f"My friend foods are: {friends_food}")
+
+my_foods.append('milk')
+friends_food.append('soya chunks')
+
+print(f"My foods are addition: {my_foods}")
+print(f"My friend foods are addition: {friends_food}")
