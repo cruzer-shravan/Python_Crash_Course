@@ -4,6 +4,7 @@
 # exit (exits terminal)
 # Ctrl + \ - opens a duplicate window
 # cd - change directory
+# Alt + up arrow --> move code one line above 
 
 '''VARIABLES'''
 

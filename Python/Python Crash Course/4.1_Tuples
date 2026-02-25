@@ -51,3 +51,5 @@ buffet_menu = ('rice', 'dal', 'sambar', 'fry', 'curd', 'curry', 'sweet')
 print("\nAmmended Buffet menu is as follows:")
 for item in buffet_menu:
     print(item.title())
+
+
