@@ -254,3 +254,350 @@ NOTE: It’s easy to mistake sets for dictionaries because they’re both wrappe
 When you see braces but no key-value pairs, you’re probably looking at a set.
 Unlike lists and dictionaries, sets do not retain items in any specific order.
 '''
+
+'''EXERCISES'''
+
+# 6.4.  Glossary 2
+
+glossary1 = {
+    '*args': 'To deal with an unknown number of arguments in a function, use the * symbol before the parameter name',
+    'keyword Arguments': 'How to use keyword arguments in a function',
+    '**kwargs': 'To deal with an unknown number of keyword arguments in a function, use the * symbol before the parameter name',
+    'lambda function': 'How to create anonymous functions in Python',
+    'super function': 'The super() function make the child class inherit the parent class'
+}
+
+for key, value in glossary1.items(): print(f"{key.title()}: {value}")
+
+glossary1['escape'] = 'The backslash character \ is used by Python to designate a nonprintable character.'
+glossary1['logical operator'] = 'One of the operators that combines boolean expressions: and, or and not'
+glossary1['parameter'] = 'A parameter is a special type of variable used to pass data to a function. ' \
+'There can be multiple parameters inside a function.'
+glossary1['reassignment'] = 'Assigning different values to the same variable during the execution of a program'
+glossary1['return value'] = 'The value provided as the result of a function call.'
+
+print(glossary1.keys())
+for key, value in glossary1.items(): print(f"{key.title()}: {value}")
+
+
+# 6.5.  Rivers
+
+rivers = {
+    'nile': 'egypt',
+    'amazon': 'south america',
+    'yangtze': 'china'
+}
+
+for river, country in rivers.items(): print(f"The {river} runs through {country}.")
+
+for river in rivers.keys(): print(river.title())
+for country in rivers.values(): print(country.title())
+
+
+# 6.6.  Polling
+ 
+favourite_languages1 = {
+    'jen': 'python',
+    'sam': 'c',
+    'james': 'java',
+    'mike': 'python'
+}
+
+polling_candidates = ['jen', 'robert', 'bruce', 'james']
+
+for name in favourite_languages1.keys():
+    if name in polling_candidates:
+        print(f"Thank you {name.title()}, for participating in the poll!")
+    else:
+        print(f"Hi {name.title()}, you are requested to participate in the poll!")
+
+
+
+'''NESTING'''
+
+# Nesting is a powerful feature, which can store multiple dictionaries in a list,
+# or a list of items as a value in a dictionary.
+
+'A list of Dictionaries'
+
+#1 Dictionaries in a list - list of multiple aliens
+
+alien_0 = {'color': 'green', 'points': 5}
+alien_1 = {'color': 'yellow', 'points': 10}
+alien_2 = {'color': 'red', 'points': 15}
+
+aliens = [alien_0, alien_1, alien_2]
+for alien in aliens:
+    print(alien)
+
+
+#2 Realistic example - use range() to create a fleet of 30 aliens
+
+# Make an empty list for storing aliens.
+aliens1=[]
+
+# Make 30 green aliens
+for alien_number in range(30):
+    new_alien =  {'color': 'green', 'points': 5, 'speed': 'slow'}
+    aliens1.append(new_alien)
+
+# Show the first 5 aliens
+for alien in aliens1[:5]:
+    print(alien)
+print("..........")
+
+# show how many aliens have been created
+print(f"The total number of aliens are {len(aliens1)}")
+
+
+#3 Changing the first three aliens to yellow, medium-speed aliens worth 10 points each.
+
+# Make an empty list for storing aliens.
+aliens2=[]
+
+# Make 30 green aliens
+for alien_number in range(30):
+    new_alien =  {'color': 'green', 'points': 5, 'speed': 'slow'}
+    aliens2.append(new_alien)
+
+for alien in aliens2[:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['speed'] = 'medium'
+        alien['points'] = 10
+    
+# Show the first five aliens
+for alien in aliens2[:5]:
+    print(alien)
+print(".................")
+
+#3  Adding elif block that turns yellow aliens into red
+for alien in aliens2[:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['speed'] = 'medium'
+        alien['points'] = 10
+    elif alien['color'] == 'yellow':
+        alien['color'] = 'red'
+        alien['speed'] = 'fast'
+        alien['points'] = 15
+
+
+'''A LIST IN A DICTIONARY'''
+
+# Store information about a pizza being ordered.
+
+pizza = {
+    'crust': 'thick',
+    'toppings': ['mushroom', 'extra cheese']    # List of toppings
+}
+
+# Summarize the order
+print(f"You ordered a {pizza['crust']} crust pizza"
+      'with following toppings:')
+
+for topping in pizza['toppings']:
+    print(f"[\t{topping}]")
+
+
+favourite_languages2 = {
+    'jen': ['python', 'rust'],
+    'sam': ['c', 'ruby'],
+    'james': ['java', 'C++'],
+    'mike': ['python']
+}
+
+for name2, languages2 in favourite_languages2.items():
+
+    if len(languages2) == 1:
+        for language in languages2:
+            print(f"\n{name2.title()}'s, favourite language is {language}")
+    else:
+        print(f"\n{name2.title()}'s, favourite languages are:")
+
+        for language in languages2:
+            print(f"\t{language.title()}")
+
+
+# NOTE: You should not nest lists and dictionaries too deeply.
+# If you’re nesting items much deeper than what you see in the preceding examples,
+# or if you’re working with someone else’s code with significant levels of nesting,
+# there’s most likely a simpler way to solve the problem.
+
+
+'''A DICTIONARY IN A DICTIONARY'''
+
+# You can nest a dictionary inside another dictionary, but your code can get complicated quickly when you do.
+
+users = {
+    'albert79': {
+        'first_name': 'albert',
+        'last_name': 'einstein',
+        'location': 'germany'
+    },
+
+    'isaac1643': {
+        'first_name': 'isaac',
+        'last_name': 'newton',
+        'location': 'england'
+    },
+
+    'mcurie1867': {
+        'first_name': 'marie',
+        'last_name': 'curie',
+        'location': 'poland'
+    }
+}
+
+for username, user_info in users.items():
+    print(f"\nUsername: {username}")
+    full_name = f"{user_info['first_name']} {user_info['last_name']}"
+    location = f"{user_info['location']}"
+
+    print(f"\tFull name: {full_name.title()}")
+    print(f"\tLocation: {location.title()}")
+
+# Notice that the structure of each user's dictionary is identical.
+
+# 6.7.  People.
+
+people = { 
+    'person1' : {
+        'first_name' : 'michael',
+        'last_name': 'jordan',
+        'category': 'basketball',
+        'age': '63',
+        'city': 'new york'
+    },
+
+    'person2' : {
+        'first_name' : 'cristiano',
+        'last_name': 'ronaldo',
+        'category': 'football',
+        'age': '40',
+        'city': 'madeira'
+        },
+
+    'person3' : {
+        'first_name' : 'sachin',
+        'last_name': 'tendulkar',
+        'category': 'cricket',
+        'age': '53',
+        'city': 'mumbai'
+        },
+}
+
+for person, personal_info in people.items():
+    print(f"\n{personal_info['first_name'].title()} {personal_info['last_name'].title()} is a famous {personal_info['category'].title()} player.")
+    print(f"He was born in {personal_info['city'].title()} and aged {personal_info['age'].title()}.")
+
+
+
+# 6.8.  PETS
+
+pets = []
+
+pet1 = {
+    'animal_type': 'dog',
+    'owner': 'Amini',
+    'pet_name': 'max',
+    'age': 2
+}
+pets.append(pet1)
+
+pet2 = {
+    'animal_type': 'cat',
+    'owner': 'jerry',
+    'pet_name': 'tom',
+    'age': 1
+}
+pets.append(pet2)
+
+pet3 = {
+    'animal_type': 'parakeet',
+    'owner': 'mini',
+    'pet_name': 'ching',
+    'age': 3
+}
+pets.append(pet3)
+
+print(pets)
+# output: [{'animal_type': 'dog', 'owner': 'Amini', 'pet_name': 'max', 'age': 2},
+# {'animal_type': 'cat', 'owner': 'jerry', 'pet_name': 'tom', 'age': 1}, 
+# {'animal_type': 'parakeet', 'owner': 'mini', 'pet_name': 'ching', 'age': 3}]
+
+
+# Display information about each pet.
+for pet in pets:
+    print(f"Here's what i know about the pet: {pet['pet_name'].title()}")
+
+    for pet, pet_info in pet.items():
+        print(f"{pet.title()}: {pet_info}")
+
+
+# 6.9.  Favourite places
+
+fav_places = {
+    'govind': ['agra', 'shimla', 'shillong'],
+    'vamsi': ['varanasi', 'kailash', 'coorg'],
+    'yogesh': ['manali', 'dwaraka']
+}
+
+for person, places in fav_places.items():
+    print(f"{person.title()}'s, favourite places are:")
+
+    for place in places:
+        print(f"\t{place.title()}")
+
+
+# 6.10. Favourite numbers
+
+fav_numbers = {
+    'michael': [9, 5],
+    'federer': [7, 4, 3],
+    'gukesh': [3, 8],
+    'magnus': [1, 7, 10],
+    'sachin': [2, 6, 10]
+} 
+
+for name, number in fav_numbers.items():
+    print(f"{name.title()}'s, favourite numbers are:")
+
+    for num in number:
+        print(f"\t{num}")
+
+# 6.11. Cities
+
+cities = {}
+
+city1 = {
+    'country': 'india',
+    'city_name': 'hyderabad',
+    'population': 11_608_400,
+    'fact': 'city of pearls'
+}
+cities['city1'] = city1
+
+city2 = {
+    'country': 'australia',
+    'city_name': 'sydney',
+    'population': 5_312_640,
+    'fact': 'largest city in australia'
+}
+cities['city2'] = city2
+
+city3 = {
+    'country': 'france',
+    'city_name': 'paris',
+    'population': 2_050_000,
+    'fact': 'the city of lights'
+}
+cities['city3'] = city3
+
+for city, city_info in cities.items():
+    print(f"The {city.title()}'s, informtion is as displayed below:")
+
+    for key, value in city_info.items():
+        print(f"\t{key}: {value}")
+
+
