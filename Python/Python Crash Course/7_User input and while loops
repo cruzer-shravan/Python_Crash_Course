@@ -74,5 +74,24 @@
 # 7.1.  Rental Car
 
 prompt1 = input("What kind of rental car would you like? ")
-message = (f"Let me see if i can find you a {prompt1}")
-print(message.title())
+message = (f"Let me see if i can find you a {prompt1.title()}")
+print(message)
+
+
+# 7.2.  Restaurant seating
+
+prompt2 = int(input("How many people are in their dinner group? "))
+if prompt2 > 8:
+    print("You will have to wait for the table!")
+else: 
+    print("The table is ready!")
+
+
+# 7.3.  Multiiple of Ten
+
+number = int(input("Enter a number to find if it is a multiple of 10: "))
+
+if number % 10 == 0:
+    print("It is a multiple of 10.")
+else:
+    print("It is not a multiple of 10.")
