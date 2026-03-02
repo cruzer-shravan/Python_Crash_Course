@@ -1,0 +1,78 @@
+# #  Python’s while loop is used to keep programs running as long as certain conditions remain true.
+
+# '''How the input() function works'''
+
+# # The input() function pauses your program and waits for the user to enter some text.
+# # The input() function takes one argument: the prompt that we want to display to the user,
+# # so they know what kind of information to enter.
+
+# message = input("Tell me something, and I will repeat it back to you: ")
+# print(message)
+
+
+# '''Writing clear prompts'''
+
+# # Each time you use the input() function, you should include a clear,
+# # easy-to-follow prompt that tells the user exactly what kind of information you’re looking for.
+
+# name = input("Please enter your name: ")
+# print(f"\nHello, {name.title()}!")
+
+# # Prompt longer than one line
+
+# prompt = "If you share your name, we can personalize the messages you see."
+# prompt += "\nWhat is your name? "
+
+# name = input(prompt)
+# print(f"\nHello, {name.title()}")
+
+
+
+# '''Using int() to accept numerical input'''
+
+# # When you use the input() function, Python interprets everything the user enters as a string.
+
+# age = input("How old are you? ")
+# print(age)
+
+# print(type(age))    # <class 'str'>
+
+# # We can resolve this issue by using the int() function, 
+# # which converts the input string to a numerical value.
+
+# age = int(age)
+# print(type(age))    # <class 'int'>
+
+
+# '''Example - Rollercoaster'''
+
+# height = input("How tall are you, in inches? ")
+# height = int(height)
+
+# if height >= 48:
+#     print("\nYou're tall enough to ride!")
+# else:
+#     print("\nYou'll be able to ride when you're a little older.")
+
+
+
+# '''MODULO Operator - returns the remainder'''
+
+# '''Example - even or odd number'''
+
+# number = input("Enter a number, and I'll tell you if it's even or odd: ")
+# number = int(number)
+
+# if number % 2 == 0:
+#     print(f"\nThe number {number} is even.")
+# else:
+#     print(f"\nThe number {number} is odd.")
+
+
+'''EXERCISES'''
+
+# 7.1.  Rental Car
+
+prompt1 = input("What kind of rental car would you like? ")
+message = (f"Let me see if i can find you a {prompt1}")
+print(message.title())
