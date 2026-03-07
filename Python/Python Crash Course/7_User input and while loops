@@ -69,29 +69,321 @@
 #     print(f"\nThe number {number} is odd.")
 
 
+# '''EXERCISES'''
+
+# # 7.1.  Rental Car
+
+# prompt1 = input("What kind of rental car would you like? ")
+# message = (f"Let me see if i can find you a {prompt1.title()}")
+# print(message)
+
+
+# # 7.2.  Restaurant seating
+
+# prompt2 = int(input("How many people are in their dinner group? "))
+# if prompt2 > 8:
+#     print("You will have to wait for the table!")
+# else: 
+#     print("The table is ready!")
+
+
+# # 7.3.  Multiiple of Ten
+
+# number = int(input("Enter a number to find if it is a multiple of 10: "))
+
+# if number % 10 == 0:
+#     print("It is a multiple of 10.")
+# else:
+#     print("It is not a multiple of 10.")
+
+
+
+# '''Introducing WHILE loops'''
+
+# # The for loop takes a collection of items and executes a block of code once for each item in the collection. 
+# # In contrast, the while loop runs as long as, or while, a certain condition is true.
+
+
+# # Example: Count up through a series of numbers
+
+# current_number = 1
+# while current_number <= 5:
+#     print(current_number)
+#     current_number += 1
+
+
+# '''Letting the user choose when to quit'''
+
+# # We define a 'quit value' and then keep the program running
+# # as long as the user has not entered the quit value.
+
+# prompt = "\nTell me something, and I will repeat it back to you: "
+# prompt += "\nEnter 'quit' to end the program. "
+
+# message = ""
+# # while message != 'quit':
+# #     message = input(prompt)
+# #     print(message)
+
+
+# while message != 'quit':
+#     message = input(prompt)
+
+#     if message != 'quit':
+#         print(message)
+
+
+
+# '''Using a FLAG'''
+
+# # For a program that should run only as long as many conditions are true,
+# # you can define one variable that determines whether or not the entire program is active.
+# # This variable, called a flag, acts as a signal to the program. 
+# # We can write our programs so they run while the flag is set to True and
+# # stop running when any of several events sets the value of the flag to False.
+
+# prompt = "\nTell me something, and I will repeat it back to you: "
+# prompt += "\nEnter 'quit' to end the program. "
+
+# active = True       # We set the variable active to Tre so the program starts in an active state.
+
+# while active:               # As long as the active variable remains True, the loop will continue running.
+#     message = input(prompt)
+
+#     if message == 'quit':
+#         active = False
+#     else:
+#         print(message)
+
+
+# ''' Using 'break' to Exit a loop '''
+
+# # The break statement directs the flow of your program;
+# # you can use it to control which lines of code are executed and which aren’t,
+# # so the program only executes code that you want it to, when you want it to.
+
+# prompt1 = "\nPlease enter the name of a city you have visited:"
+# prompt1 += "\n(Enter 'quit' when you are finished.)"
+
+# while True:
+#     city = input(prompt1)
+
+#     if city == 'quit':
+#         break
+#     else:
+#         print(f"I'd love to go {city.title()}!")
+
+# # You can use the break statement in any of Python’s loops. 
+# # For example, you could use break to quit a for loop that’s working through a list or a dictionary.
+
+
+# '''Using continue in a loop'''
+
+# # Rather than breaking out of a loop entirely without executing the rest of its code,
+# # you can use the continue statement to return to the beginning of the loop,
+# # based on the result of a conditional test.
+
+# current_number1 = 0
+# while current_number1 < 10:
+#     current_number1 += 1
+#     if current_number1 % 2 == 0:
+#         continue            # Ignore rest of the loop and returns to the beginning
+
+#     print(current_number1)
+
+
+# '''Avoiding infinite loops'''
+
+# # Every while loop needs a way to stop running so it won’t continue to run forever.
+
+# x = 1
+# while x <= 5:
+#     print(x)
+#     x += 1      # Omitting this line will send the while loop to run forever.
+
+
+# '''EXERCISES'''
+
+# # 7.4.  Pizza Toppings
+
+# prompt1 = "Enter the toppping you require on pizza: "
+# toppings = True
+
+# while toppings:
+#     topping = input(prompt1)
+
+#     if topping == 'quit':
+#         toppings = False
+#     else:
+#         print(topping)
+    
+
+# # 7.5.  Movie Tickets
+
+# tickets = True
+# prompt2 = "Enter you age: "
+
+# while tickets:
+#     age = int(input(prompt2))
+
+#     if age > 12:
+#         print("The price of ticket is $15.")
+#     elif age > 3 and age < 12:
+#         print("The price of ticket is $10.")
+#     else:
+#         print("The price of the ticket is Free.")
+
+
+# # 7.6.  Three exits
+
+# active = True
+# prompt2 = "Enter you age: "
+# customers = int(input("Enter the number of customers: "))
+# attempts = 0
+
+# while active:
+#     age = int(input(prompt2))
+ 
+#     if attempts < customers:
+#         if age > 12:
+#             print("The price of ticket is $15.")
+#             attempts += 1
+#         elif age > 3 and age < 12:
+#             print("The price of ticket is $10.")
+#             attempts += 1
+#         else:
+#             print("The price of the ticket is Free.")
+#             attempts += 1
+
+#     if attempts == customers:
+#         break
+
+
+# # 7.6.  Infinity
+
+# active = True
+# prompt2 = "Enter you age: "
+# customers = int(input("Enter the number of customers: "))
+
+# while active:
+#     age = int(input(prompt2))
+#     attempts = 0
+
+#     if attempts < customers:
+#         if age > 12:
+#             print("The price of ticket is $15.")
+#             attempts += 1
+#         elif age > 3 and age < 12:
+#             print("The price of ticket is $10.")
+#             attempts += 1
+#         else:
+#             print("The price of the ticket is Free.")
+#             attempts += 1
+
+#     if attempts == customers:
+#         break
+
+
+
+# '''Using a while loop with lists and dictionaries'''
+
+# # To keep track of many users and pieces of information,
+# # we’ll need to use lists and dictionaries with our while loops.
+
+# # A for loop is effective for looping through a list, 
+# # but you shouldn’t modify a list inside a for loop because 
+# # Python will have trouble keeping track of the items in the list.
+
+# # To modify a list as you work through it, use a while loop.
+# # Using while loops with lists and dictionaries allows you to collect, store,
+# # and organize lots of input to examine and report on later.
+
+
+# '''Moving items from One list to another'''
+
+# # Start with users that need to be verified
+# # and an empty list to hold confirmed users.
+
+# unconfirmed_users = ['alice', 'brian', 'candere']
+# confirmed_users = []
+
+# # Verify each user until there are no more unconfirmed users.
+# # Move each verified user into the list of confirmed users.
+
+# while unconfirmed_users:
+#     current_user = unconfirmed_users.pop()
+
+#     print(f"Verifying user: {current_user.title()}")
+#     confirmed_users.append(current_user)
+
+# # Display all confirmed users.
+# print("\nThe following users have been confirmed:")
+# for confirmed_user in confirmed_users:
+#     print(confirmed_user.title())
+
+
+
+# '''Removing All Instances of Specific Values from a List'''
+
+# pets = ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
+# print(pets)
+
+# while 'cat' in pets:
+#     pets.remove('cat')
+# print(pets)
+
+
+# '''Filling a Dictionary with User Input'''
+
+# responses = {}
+
+# # Set a flag to inidcate that polling is active.
+# polling_active = True
+
+# while polling_active:
+#     # Prompt for the person's name and response.
+#     name = input("\nWhat is your name? ")
+#     response = input("Which mountain would you like to climb someday? ")
+
+#     # Store the response in the dictionary.
+#     responses[name] = response
+
+#     # Find out if anyone else is going to take the poll.
+#     repeat = input("Would you like to let another person respond (Yes/ No)? ")
+#     if repeat == 'no':
+#         polling_active = False
+
+# # Polling is complete. Show the results:
+
+# print("/n --- Poll Results ---")
+# for name, response in responses.items():
+#     print(f"{name.title()} would like to climb {response.title()}.")
+
+
 '''EXERCISES'''
 
-# 7.1.  Rental Car
+# 7.8.  Deli
 
-prompt1 = input("What kind of rental car would you like? ")
-message = (f"Let me see if i can find you a {prompt1.title()}")
-print(message)
+sandwich_orders = ['cheese', 'paneer', 'chicken', 'tuna']
+
+finished_sandwiches = []
+
+while sandwich_orders:
+    current_order = sandwich_orders.pop()
+    print(f"Your {current_order.title()} sandwich is under preparation!")
+
+    finished_sandwiches.append(current_order)
+    print(f"I made your {current_order} sandwich!")
+
+print("\nThe following orders have been prepared:")
+for sandwich in finished_sandwiches:
+    print(f"\t{sandwich.title()} Sandwich")
 
 
-# 7.2.  Restaurant seating
+# 7.9.  No Pastrami
 
-prompt2 = int(input("How many people are in their dinner group? "))
-if prompt2 > 8:
-    print("You will have to wait for the table!")
-else: 
-    print("The table is ready!")
+sandwich_orders = ['cheese', 'pastrami', 'paneer', 'pastrami', 'chicken', 'pastrami', 'tuna']
 
-
-# 7.3.  Multiiple of Ten
-
-number = int(input("Enter a number to find if it is a multiple of 10: "))
-
-if number % 10 == 0:
-    print("It is a multiple of 10.")
-else:
-    print("It is not a multiple of 10.")
+while 'pastrami' in sandwich_orders:
+    sandwich_orders.remove('pastrami')
+print(sandwich_orders)
