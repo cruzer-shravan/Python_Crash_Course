@@ -135,3 +135,74 @@ make_shirt('small', 'never give up' )
 # Keyword arguments
 make_shirt(size='medium', message='I LOVE INDIA')
 
+
+# 8.4.  Large shirts
+
+def make_shirt(message, size = 'large'):
+    """Describes the size and message to be printed on the T-shirt."""
+    print(f"\nI would prefer {size} size T-shirt.")
+    print(f"I want '{message.title()}' to be printed on my T-shirt.")
+
+make_shirt('i love python')
+make_shirt('i love python', size='medium')
+
+make_shirt(size='any', message='train hard')
+
+
+# 8.5.  Cities
+
+def describe_city(city_name, country = 'iceland'):
+    """Describes - in which country the city is located"""
+    print(f"\n{city_name.title()} is in {country.title()}.")
+
+describe_city('reykjavik')
+describe_city('akranes')
+describe_city('delhi', country='india')
+
+
+
+'''RETURN VALUES'''
+
+# Return values allow you to move much of your program's grunt work into functions,
+# which can simplify the body of your program.
+# The value the function returns is called 'return values'
+
+'RETURNING A SIMPLE VALUE'
+
+# Neatly formatted full name
+
+def get_formatted_name(first_name, last_name):
+    """Returns a full name, neatly formatted. Useful when working with large programs."""
+    full_name = f"\n{first_name} {last_name}"
+    return full_name.title()        # This line is returned to the calling line. 
+
+musician = get_formatted_name('jimi', 'hendrix')    # calling line
+print(musician)
+
+
+'''MAKING AN ARGUMENT OPTIONAL'''
+
+def get_formatted_name(first_name, middle_name, last_name):
+    """Returns a full name, neatly formatted. Useful when working with large programs."""
+    full_name = f"\n{first_name} {middle_name} {last_name}"
+    return full_name.title()        # This line is returned to the calling line. 
+
+musician = get_formatted_name('amit', 'kumar', 'singh')    # calling line
+print(musician)
+
+
+# MAKING ARGUMENT OPTIONAL
+
+def get_formatted_name(first_name, last_name, middle_name = ""):
+    """Returns a full name, neatly formatted. Useful when working with large programs."""
+    if middle_name:
+        full_name = f"\n{first_name} {middle_name} {last_name}"
+    else:
+        full_name = f"\n{first_name} {last_name}"
+    return full_name.title()        # This line is returned to the calling line. 
+
+musician = get_formatted_name('jai', 'krishn', 'shri')    # calling line
+print(musician)
+
+musician = get_formatted_name('jai', 'hanuman')
+print(musician)
