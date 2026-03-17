@@ -1,208 +1,321 @@
-# Functions are named blocks of code designed to do one specific job.
-# Using functions makes your programs easier to write, read, test and fix.
+# # Functions are named blocks of code designed to do one specific job.
+# # Using functions makes your programs easier to write, read, test and fix.
 
-# Certain functions - primary job is to display information and other functions.
-# Other functions - designed to process data and return a value or set of values.
+# # Certain functions - primary job is to display information and other functions.
+# # Other functions - designed to process data and return a value or set of values.
 
-# Functions are stored in separate files called Modules to help organize your main program files.
+# # Functions are stored in separate files called Modules to help organize your main program files.
 
 
-'''SIMPLE FUNCTION'''
+# '''SIMPLE FUNCTION'''
 
-def greet_user():                       # keyword
-    """Display a simple greeting."""    # docstring - describes what the function does.
-    print("Hello!")                     # actual code
+# def greet_user():                       # keyword
+#     """Display a simple greeting."""    # docstring - describes what the function does.
+#     print("Hello!")                     # actual code
 
-greet_user()                            # call function - executes the code in the function
+# greet_user()                            # call function - executes the code in the function
 
 
-'''Passing information to a Function'''
+# '''Passing information to a Function'''
 
-def greet_user(username):                   # username - parameter i.e variable
-    """Display a simple greeting"""
-    print(f"Hello! {username.title()}.")
+# def greet_user(username):                   # username - parameter i.e variable
+#     """Display a simple greeting"""
+#     print(f"Hello! {username.title()}.")
 
-greet_user('mike')                          # mike - argument i.e. value (value is assigned to parameter)
+# greet_user('mike')                          # mike - argument i.e. value (value is assigned to parameter)
 
 
 
-'''TRY IT YOURSELF'''
+# '''TRY IT YOURSELF'''
 
-# 8.1.  Message
+# # 8.1.  Message
 
-def display_message():
-    """Displays a simple message about what i am learning"""
-    print("I am learning to create Function in python language.")
+# def display_message():
+#     """Displays a simple message about what i am learning"""
+#     print("I am learning to create Function in python language.")
 
-display_message()
+# display_message()
 
 
-# 8.2.  Favourite book
-def favourite_book(title):
-    """Prints the name of the favourite book"""
-    print(f"One of my favourite book is {title.title()}.")
+# # 8.2.  Favourite book
+# def favourite_book(title):
+#     """Prints the name of the favourite book"""
+#     print(f"One of my favourite book is {title.title()}.")
 
-favourite_book("Alice in Wonderland")
+# favourite_book("Alice in Wonderland")
 
 
 
-'''PASSING ARGUMENTS'''
+# '''PASSING ARGUMENTS'''
 
-''' POSITIONAL ARGUMENTS '''
-# Positional arguments need to be in the same order the parameters were written. Order matters.
+# ''' POSITIONAL ARGUMENTS '''
+# # Positional arguments need to be in the same order the parameters were written. Order matters.
 
-def describe_pet(animal_type, pet_name):
-    """Displays information about pet"""
-    print(f"\nI have a {animal_type.title()}.")
-    print(f"My {animal_type.title()}'s name is {pet_name.title()}.")
+# def describe_pet(animal_type, pet_name):
+#     """Displays information about pet"""
+#     print(f"\nI have a {animal_type.title()}.")
+#     print(f"My {animal_type.title()}'s name is {pet_name.title()}.")
 
-describe_pet('hamster', 'harry')    
+# describe_pet('hamster', 'harry')    
 
-# Argument 'hamster' is assigned to the parameter animal_type and 'harry' to pet_name.
+# # Argument 'hamster' is assigned to the parameter animal_type and 'harry' to pet_name.
 
-''' MULTIPLE FUNCTION CALLS'''
+# ''' MULTIPLE FUNCTION CALLS'''
 
-# Calling a function multiple times is a very efficient way to work.
+# # Calling a function multiple times is a very efficient way to work.
 
-describe_pet('german shepherd', 'rocky')
-describe_pet('pitbull', 'puppy')
+# describe_pet('german shepherd', 'rocky')
+# describe_pet('pitbull', 'puppy')
 
 
-'''KEYWORD ARGUMENTS'''
+# '''KEYWORD ARGUMENTS'''
 
-# A Keyword argument is a name-value pair that you pass to a function.
-# We directly associate the name and the value within the argument, thereby avoiding confusion.
+# # A Keyword argument is a name-value pair that you pass to a function.
+# # We directly associate the name and the value within the argument, thereby avoiding confusion.
 
-describe_pet(animal_type='labrador', pet_name='larry')
-describe_pet(animal_type='boxer', pet_name='tyson')
-describe_pet(animal_type='pug', pet_name='pugsy')
+# describe_pet(animal_type='labrador', pet_name='larry')
+# describe_pet(animal_type='boxer', pet_name='tyson')
+# describe_pet(animal_type='pug', pet_name='pugsy')
 
 
-'''DEFAULT VALUES'''
+# '''DEFAULT VALUES'''
 
-# When writing a function, you can define a 'default value' for each parameter.
-# If an argument for a parameter is provided in the function call, Python uses the argument value.
-# If not it uses the parameter's default value.
+# # When writing a function, you can define a 'default value' for each parameter.
+# # If an argument for a parameter is provided in the function call, Python uses the argument value.
+# # If not it uses the parameter's default value.
 
-def describe_pet(pet_name, animal_type = 'dog'):       # Python interprets this as a positional argument
-    """Display's information about pet."""
-    print(f"\nI have a {animal_type}.")
-    print(f"My {animal_type}'s name is {pet_name.title()}.")
+# def describe_pet(pet_name, animal_type = 'dog'):       # Python interprets this as a positional argument
+#     """Display's information about pet."""
+#     print(f"\nI have a {animal_type}.")
+#     print(f"My {animal_type}'s name is {pet_name.title()}.")
 
-describe_pet('willie')
+# describe_pet('willie')
 
-# If we give an explicit argument for animal_type, pyton ignores the parameter's default value.
-describe_pet(animal_type='doberman', pet_name='duffy')
+# # If we give an explicit argument for animal_type, pyton ignores the parameter's default value.
+# describe_pet(animal_type='doberman', pet_name='duffy')
 
-'''NOTE: 
-When you use default values, 
-any parameter with a default value needs to be listed after all the parameters that don’t have default values. 
-This allows Python to continue interpreting positional arguments correctly.'''
+# '''NOTE: 
+# When you use default values, 
+# any parameter with a default value needs to be listed after all the parameters that don’t have default values. 
+# This allows Python to continue interpreting positional arguments correctly.'''
 
-'''EQUIVALENT FUNCTION CALLS'''
+# '''EQUIVALENT FUNCTION CALLS'''
 
-# There are several equivalent ways to call a function.
+# # There are several equivalent ways to call a function.
 
-# A dog named willie.
-describe_pet('willie')
-describe_pet(pet_name='willie')
+# # A dog named willie.
+# describe_pet('willie')
+# describe_pet(pet_name='willie')
 
-# A hamster named Harry.
-describe_pet('harry', 'hamster')
-describe_pet(pet_name='harry', animal_type='hamster')
-describe_pet(animal_type='hamster', pet_name='harry')
+# # A hamster named Harry.
+# describe_pet('harry', 'hamster')
+# describe_pet(pet_name='harry', animal_type='hamster')
+# describe_pet(animal_type='hamster', pet_name='harry')
 
 
-'''AVOIDING ARGUMENTS'''
+# '''AVOIDING ARGUMENTS'''
 
-# Unmatched arguments occur when you provide fewer or more arguments than a function needs to do its work.
-# for example
-# describe_pet()    - Type error- missing 2 required positional arguments.
+# # Unmatched arguments occur when you provide fewer or more arguments than a function needs to do its work.
+# # for example
+# # describe_pet()    - Type error- missing 2 required positional arguments.
 
 
-'''TRY IT YOURSELF'''
+# '''TRY IT YOURSELF'''
 
-# 8.3.  T-shirt
+# # 8.3.  T-shirt
 
-def make_shirt(size, message):
-    """Describes the size and message to be printed on the T-shirt."""
-    print(f"\nI would prefer {size} size T-shirt.")
-    print(f"I want '{message.title()}' to be printed on my T-shirt.")
+# def make_shirt(size, message):
+#     """Describes the size and message to be printed on the T-shirt."""
+#     print(f"\nI would prefer {size} size T-shirt.")
+#     print(f"I want '{message.title()}' to be printed on my T-shirt.")
 
-# Positional arguments
-make_shirt('small', 'never give up' )
+# # Positional arguments
+# make_shirt('small', 'never give up' )
 
-# Keyword arguments
-make_shirt(size='medium', message='I LOVE INDIA')
+# # Keyword arguments
+# make_shirt(size='medium', message='I LOVE INDIA')
 
 
-# 8.4.  Large shirts
+# # 8.4.  Large shirts
 
-def make_shirt(message, size = 'large'):
-    """Describes the size and message to be printed on the T-shirt."""
-    print(f"\nI would prefer {size} size T-shirt.")
-    print(f"I want '{message.title()}' to be printed on my T-shirt.")
+# def make_shirt(message, size = 'large'):
+#     """Describes the size and message to be printed on the T-shirt."""
+#     print(f"\nI would prefer {size} size T-shirt.")
+#     print(f"I want '{message.title()}' to be printed on my T-shirt.")
 
-make_shirt('i love python')
-make_shirt('i love python', size='medium')
+# make_shirt('i love python')
+# make_shirt('i love python', size='medium')
 
-make_shirt(size='any', message='train hard')
+# make_shirt(size='any', message='train hard')
 
 
-# 8.5.  Cities
+# # 8.5.  Cities
 
-def describe_city(city_name, country = 'iceland'):
-    """Describes - in which country the city is located"""
-    print(f"\n{city_name.title()} is in {country.title()}.")
+# def describe_city(city_name, country = 'iceland'):
+#     """Describes - in which country the city is located"""
+#     print(f"\n{city_name.title()} is in {country.title()}.")
 
-describe_city('reykjavik')
-describe_city('akranes')
-describe_city('delhi', country='india')
+# describe_city('reykjavik')
+# describe_city('akranes')
+# describe_city('delhi', country='india')
 
 
 
-'''RETURN VALUES'''
+# '''RETURN VALUES'''
 
-# Return values allow you to move much of your program's grunt work into functions,
-# which can simplify the body of your program.
-# The value the function returns is called 'return values'
+# # Return values allow you to move much of your program's grunt work into functions,
+# # which can simplify the body of your program.
+# # The value the function returns is called 'return values'
 
-'RETURNING A SIMPLE VALUE'
+# 'RETURNING A SIMPLE VALUE'
 
-# Neatly formatted full name
+# # Neatly formatted full name
 
-def get_formatted_name(first_name, last_name):
-    """Returns a full name, neatly formatted. Useful when working with large programs."""
-    full_name = f"\n{first_name} {last_name}"
-    return full_name.title()        # This line is returned to the calling line. 
+# def get_formatted_name(first_name, last_name):
+#     """Returns a full name, neatly formatted. Useful when working with large programs."""
+#     full_name = f"\n{first_name} {last_name}"
+#     return full_name.title()        # This line is returned to the calling line. 
 
-musician = get_formatted_name('jimi', 'hendrix')    # calling line
-print(musician)
+# musician = get_formatted_name('jimi', 'hendrix')    # calling line
+# print(musician)
 
 
-'''MAKING AN ARGUMENT OPTIONAL'''
+# '''MAKING AN ARGUMENT OPTIONAL'''
 
-def get_formatted_name(first_name, middle_name, last_name):
-    """Returns a full name, neatly formatted. Useful when working with large programs."""
-    full_name = f"\n{first_name} {middle_name} {last_name}"
-    return full_name.title()        # This line is returned to the calling line. 
+# def get_formatted_name(first_name, middle_name, last_name):
+#     """Returns a full name, neatly formatted. Useful when working with large programs."""
+#     full_name = f"\n{first_name} {middle_name} {last_name}"
+#     return full_name.title()        # This line is returned to the calling line. 
 
-musician = get_formatted_name('amit', 'kumar', 'singh')    # calling line
-print(musician)
+# musician = get_formatted_name('amit', 'kumar', 'singh')    # calling line
+# print(musician)
 
 
-# MAKING ARGUMENT OPTIONAL
+# # MAKING ARGUMENT OPTIONAL - 
+# # Optinal values allow functions to handle a wide range of use cases
+# # while letting function calls remain as simple as possible.
 
-def get_formatted_name(first_name, last_name, middle_name = ""):
-    """Returns a full name, neatly formatted. Useful when working with large programs."""
-    if middle_name:
-        full_name = f"\n{first_name} {middle_name} {last_name}"
-    else:
-        full_name = f"\n{first_name} {last_name}"
-    return full_name.title()        # This line is returned to the calling line. 
+# def get_formatted_name(first_name, last_name, middle_name = ""):
+#     """Returns a full name, neatly formatted. Useful when working with large programs."""
+#     if middle_name:
+#         full_name = f"\n{first_name} {middle_name} {last_name}"
+#     else:
+#         full_name = f"\n{first_name} {last_name}"
+#     return full_name.title()        # This line is returned to the calling line. 
 
-musician = get_formatted_name('jai', 'krishn', 'shri')    # calling line
-print(musician)
+# musician = get_formatted_name('jai', 'krishn', 'shri')    # calling line
+# print(musician)
 
-musician = get_formatted_name('jai', 'hanuman')
-print(musician)
+# musician = get_formatted_name('jai', 'hanuman')
+# print(musician)
+
+
+
+# '''RETURNING A DICTIONARY'''
+
+# # A function can return any kind of value you need it to,
+# # including more complicated data structures like lists and dictionaries.
+
+# def build_person(first_name, last_name):
+#     """Returns a dictionary of information about a person"""
+#     person = {'first': first_name, 'last': last_name}
+#     return person
+
+# musician = build_person('Adam', 'Gilchrist')
+# print(f"\n{musician}")
+
+# # ADDING A NEW OPTIONAL PARAMETER
+
+# def build_person(first_name, last_name, age = None):
+#     """Provides information about the person"""
+#     person = {'first' : first_name, 'last' : last_name}
+#     if age:
+#         person['age']= age
+#     return person
+
+# musician = build_person('Adam', 'Gilchrist', age=51)
+# print(f"\n{musician}")
+
+# # This function always stores a person's name, 
+# # but it can also be modified to store any other information you want about a person.
+
+
+# '''USING A FUNCTION WITH A WHILE LOOP'''
+
+# def get_formatted_name(first_name, last_name):
+#     """Return a full name, neatly formatted."""
+#     full_name = f"{first_name} {last_name}"
+#     return full_name.title()
+
+# # This is an infinite loop!
+# # while True:
+# #     print("\nPlease tell me your name: ")
+# #     f_name = input("First name: ")
+# #     l_name = input("Last name: ")
+    
+# #     formatted_name = get_formatted_name(f_name, l_name)
+# #     print(f"\nHello, {formatted_name}!")
+
+
+# # Ammended to stop infinite inputs
+# while True:
+#     print("\nPlease tell me your name: ")
+#     print("(enter 'q' at any time to quit)")
+
+#     f_name = input("First name: ")
+#     if f_name == 'q':
+#         break
+    
+#     l_name = input("Last name: ")
+#     if l_name == 'q':
+#         break
+
+#     formatted_name = get_formatted_name(f_name, l_name)
+#     print(f"\nHello, {formatted_name}!")
+
+
+
+# '''TRY IT YOURSELF'''
+
+# # 8.6.  CITY NAMES
+
+# def city_country(city, country):
+#     """Provides information about a city and its country"""
+#     formatted_city = print(f"\n{city.title()}, {country.title()}")
+#     return formatted_city
+
+# city_country('santiago', 'chile')
+# city_country('colombo', 'srilanka')
+# city_country('kathmandu', 'nepal')
+
+
+# 8.7.  Album
+
+def make_album(artist_name, album_title):
+    """Provides the details of album and its title in dictionary format."""
+    album_dict = {'artist_name' : artist_name.title(), 
+             'album_title': album_title.title()
+             }
+    return album_dict
+
+album = make_album("the beatles", 'abbey road')
+print(album)
+
+album = make_album("pink floyd", "the dark side of the moon")
+print(album)
+
+album = make_album('radio head', 'in rainbows')
+print(album)
+
+
+
+def make_album(artist_name, album_title, num_songs = None):
+#     """Provides the details of album and no. of songs in it."""
+    album_dict = {'artist_name' : artist_name, 'album_title': album_title }
+
+    if num_songs:
+        album['num_songs'] = num_songs
+    return album
+
+singer = make_album('beatles', 'abbey road')
+print(singer)
