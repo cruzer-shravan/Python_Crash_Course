@@ -291,31 +291,137 @@
 
 # 8.7.  Album
 
-def make_album(artist_name, album_title):
-    """Provides the details of album and its title in dictionary format."""
-    album_dict = {'artist_name' : artist_name.title(), 
-             'album_title': album_title.title()
-             }
-    return album_dict
+# def make_album(artist_name, album_title):
+#     """Provides the details of album and its title in dictionary format."""
+#     album_dict = {'artist_name' : artist_name.title(), 
+#              'album_title': album_title.title()
+#              }
+#     return album_dict
 
-album = make_album("the beatles", 'abbey road')
-print(album)
+# album = make_album("the beatles", 'abbey road')
+# print(album)
 
-album = make_album("pink floyd", "the dark side of the moon")
-print(album)
+# album = make_album("pink floyd", "the dark side of the moon")
+# print(album)
 
-album = make_album('radio head', 'in rainbows')
-print(album)
+# album = make_album('radio head', 'in rainbows')
+# print(album)
 
 
 
-def make_album(artist_name, album_title, num_songs = None):
+# def make_album(artist_name, album_title, num_songs = None):
 #     """Provides the details of album and no. of songs in it."""
-    album_dict = {'artist_name' : artist_name, 'album_title': album_title }
+#     album_dict = {'artist_name' : artist_name.title(), 'album_title': album_title.title() }
 
-    if num_songs:
-        album['num_songs'] = num_songs
-    return album
+#     if num_songs:
+#         album_dict['num_songs'] = num_songs
+#     return album_dict
 
-singer = make_album('beatles', 'abbey road')
-print(singer)
+# album1 = make_album('beatles', 'abbey road', num_songs=3)
+# print(album1)
+
+
+# 8.8.  User Albums
+
+# while True:
+#     print("Type 'quit' to quit the loop! ")
+#     artist_name = input("Enter the name of the artist: ")
+#     if artist_name == 'quit':
+#         break
+
+#     album_title = input("Enter the title of the album: ")
+#     if album_title == 'quit':
+#         break
+
+#     num_songs = int(input("Number of songs in the album: "))
+#     if num_songs == 'quit':
+#         break
+
+#     if num_songs:
+#         album_dict = {'artist_name': artist_name.title(), 'album_title': album_title.title(),  'num_songs': num_songs}
+#     else:
+#         album_dict = {'artist_name' : artist_name.title(), 'album_title': album_title.title() }
+    
+#     print(album_dict)
+
+
+# '''PASSING A LIST'''
+
+# # When you pass a list to a function, the function gets direct access to the contents of the list.
+
+# def greet_users(names):
+#     """Print a simple greeting to each user in the list."""
+#     for name in names:
+#         print(f"Hello, {name.title()}!")
+
+# usernames = ['mike', 'adam', 'sachin']
+# greet_users(usernames)
+
+
+# '''MODIFYING A LIST IN A FUNCTION'''
+
+# # When you pass a list to a function, the function can modify the list.
+# # Any changes made to the list inside the function’s body are permanent, 
+# # allowing you to work efficiently even when you’re dealing with large amounts of data.
+
+# 'PRINTING MODELS'
+
+# # Start with some designs that need to be printed.
+# unprinted_designs = ['phone case', 'robot pendant', 'samurai']
+# completed_designs = []
+
+# # Simulated printing each design, until none are left.
+# # Move each design to completed_models after printing.
+
+# while unprinted_designs:
+#     current_design = unprinted_designs.pop()
+#     print(f"Printing model: {current_design}")
+#     completed_designs.append(current_design)
+
+# # Display all completed models.
+# print("\nThe following models have been printed: ")
+# for completed_design in completed_designs:
+#     print(f"\t{completed_design}")
+
+
+
+'''REORGANISE THE CODE'''
+
+# We can write two separate functions, each of which does on specific job.
+# We're restructuring the code more carefully.
+
+def print_models(unprinted_designs, completed_designs):
+    """
+    Simulate printing each design, until none are left.
+    Move each design to completed_designs after printing.
+    """
+    while unprinted_designs:
+        current_design = unprinted_designs.pop()
+        print(f"Printing model: {current_design}")
+        completed_designs.append(current_design)
+
+
+def show_completed_designs(completed_designs):
+    """Show all the models that were printed."""
+    print("\nThe following models have been printed:")
+    for completed_design in completed_designs:
+        print(completed_design)
+
+unprinted_designs = ['phone case', 'robot pendant', 'samurai']
+completed_designs = []
+
+print_models(unprinted_designs, completed_designs)
+show_completed_designs(completed_designs)
+
+
+'''PREVENTING A FUNCTION FROM MODIFYING A LIST'''
+
+# In the above code, because we have moved all the design names out of unprinted_designs,
+# the list is now empty and the empty list the only version we have; the original is gone.
+
+# Any changes the function makes to the list will affect only the copy, 
+# leaving the original list intact.
+
+# function_name(list_name[:])
+
+print_models(unprinted_designs[:], completed_designs)
