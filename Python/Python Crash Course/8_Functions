@@ -587,3 +587,99 @@
 # print(car)
 
 
+'''IMPORTING AN ENTIRE MODULE'''
+
+# A module is a file ending in .py that contains the code you want to import into your program.
+# When Python reads this file, the line import pizza tells Python to open the file pizza.py
+# and copy all the functions from it into this program. You don’t actually see code being
+# copied between files because Python copies the code behind the scenes, 
+# just before the program runs. All you need to know is that any function defined in pizza.py 
+# will now be available in making_pizzas.py.
+
+'Approach for importing'
+# module_name.function_name()
+
+import module_pizza
+
+module_pizza.make_pizza(15, 'pepperoni')
+module_pizza.make_pizza(20, 'chicken', 'bell peppers', 'extra cheese')
+
+
+'''IMPORTING SPECIFIC FUNCTIONS'''
+
+# from module_name import function_0, function_1, function_3
+
+from module_pizza import make_pizza         # Here we don't need the dot notation when you call a function.
+
+make_pizza(12, 'olives', 'extra cheese')
+
+
+
+'''Using as to Give a Function an ALIAS'''
+
+# ALIAS - short, unique alias - an alternate name similar to a nickname for the function.
+
+from module_pizza import make_pizza as mp
+
+mp(10, 'margherita', 'olives')
+
+# General syntax
+# from module_name import function_name as fn
+
+
+
+'Using as to Give a Module an Alias'
+
+# Giving a module a short alias, allows you to call the module's functions more quickly.
+# It redirects the attention from the  module name 
+# and allows you to focus on the descriptive names of its functions.
+
+import module_pizza as p
+
+p.make_pizza(18, 'cheese', 'bell peppers')
+
+# General Syntax
+# import module_name as mn
+
+
+'''Importing all functions in a module'''
+
+# You can tell python to import every function in a module by using the asterisk (*) operator.
+
+from module_pizza import *
+
+make_pizza(10, 'none')
+
+# if the module has a function name that matches an existing name in your project,
+# you can get unexpected results. Python may see several functions or variables 
+# with the same name, and instead of importing all the functions separately, 
+# it will overwrite the functions.
+
+# The best approach is to import the function or functions you want, 
+# or import the entire module and use the dot notation.
+# This leads to clear code that’s easy to read and understand.
+
+
+
+'''STYLING FUNCTIONS'''
+
+# Functions should have descriptive names 
+# and these names should use lowercase letters and underscores.
+# Module names should use these conventions as well.
+
+# Every function should have a comment (docstring) that explains concisely what the function does.
+
+# If you specify a default value for a parameter, no spaces should be used on either side of the equal sign
+
+'''def function_name(parameter_0, parameter_1='default value')'''
+
+# The same convention is used for keyword arguments in function calls.
+
+'''def function_name(value_0, parameter_1='value')'''
+
+'''
+def function_name(
+        parameter_0, parameter_1, parameter_2,
+        parameter_3, parameter_4, parameter_5):
+    function body ...
+'''
