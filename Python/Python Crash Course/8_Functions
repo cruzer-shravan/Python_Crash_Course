@@ -385,43 +385,96 @@
 
 
 
-'''REORGANISE THE CODE'''
+# '''REORGANISE THE CODE'''
 
-# We can write two separate functions, each of which does on specific job.
-# We're restructuring the code more carefully.
+# # We can write two separate functions, each of which does on specific job.
+# # We're restructuring the code more carefully.
 
-def print_models(unprinted_designs, completed_designs):
-    """
-    Simulate printing each design, until none are left.
-    Move each design to completed_designs after printing.
-    """
-    while unprinted_designs:
-        current_design = unprinted_designs.pop()
-        print(f"Printing model: {current_design}")
-        completed_designs.append(current_design)
-
-
-def show_completed_designs(completed_designs):
-    """Show all the models that were printed."""
-    print("\nThe following models have been printed:")
-    for completed_design in completed_designs:
-        print(completed_design)
-
-unprinted_designs = ['phone case', 'robot pendant', 'samurai']
-completed_designs = []
-
-print_models(unprinted_designs, completed_designs)
-show_completed_designs(completed_designs)
+# def print_models(unprinted_designs, completed_designs):
+#     """
+#     Simulate printing each design, until none are left.
+#     Move each design to completed_designs after printing.
+#     """
+#     while unprinted_designs:
+#         current_design = unprinted_designs.pop()
+#         print(f"Printing model: {current_design}")
+#         completed_designs.append(current_design)
 
 
-'''PREVENTING A FUNCTION FROM MODIFYING A LIST'''
+# def show_completed_designs(completed_designs):
+#     """Show all the models that were printed."""
+#     print("\nThe following models have been printed:")
+#     for completed_design in completed_designs:
+#         print(completed_design)
 
-# In the above code, because we have moved all the design names out of unprinted_designs,
-# the list is now empty and the empty list the only version we have; the original is gone.
+# unprinted_designs = ['phone case', 'robot pendant', 'samurai']
+# completed_designs = []
 
-# Any changes the function makes to the list will affect only the copy, 
-# leaving the original list intact.
+# print_models(unprinted_designs, completed_designs)
+# show_completed_designs(completed_designs)
 
-# function_name(list_name[:])
 
-print_models(unprinted_designs[:], completed_designs)
+# '''PREVENTING A FUNCTION FROM MODIFYING A LIST'''
+
+# # In the above code, because we have moved all the design names out of unprinted_designs,
+# # the list is now empty and the empty list the only version we have; the original is gone.
+
+# # Any changes the function makes to the list will affect only the copy, 
+# # leaving the original list intact.
+
+# # function_name(list_name[:])
+
+# print_models(unprinted_designs[:], completed_designs)
+
+
+# '''TRY IT YOURSELF'''
+
+# # 8.9.    Messages
+
+# messages = ['i love you', 'i hate you', 'i miss you', 'i dont miss you']
+# def show_messages(messages):
+#     for message in messages:
+#         print(message)
+
+# show_messages(messages)
+
+# # 8.10. Sending messages
+
+# messages = ['i love you', 'i hate you', 'i miss you', 'i dont miss you']
+# sent_messages = []
+
+# def send_messages(messages, sent_messages):
+#     while messages:
+#         current_message = messages.pop()
+#         print(f"Printing: {current_message.title()}")
+#         sent_messages.append(current_message)
+
+# def show_sent_messages(sent_messages):
+#     print("The following messages have been printed:")
+#     for sent_message in sent_messages:
+#         print(sent_message)
+
+# send_messages(messages, sent_messages)
+# show_sent_messages(sent_messages)
+
+# 8.11. Archived Messages
+
+def send_messages(messages, sent_messages):
+    while messages:
+        current_message = messages.pop()
+        sent_messages.append(current_message)
+
+def show_sent_messages(sent_messages):
+    print("The sent messages are:")
+    for sent_message in sent_messages:
+        print(sent_message)
+        
+    print("The original messages are:")
+    for message in messages:
+        print(message)
+
+messages = ['i love you', 'i hate you', 'i miss you', 'i dont miss you']
+sent_messages = []
+
+send_messages(messages[:], sent_messages)
+show_sent_messages(sent_messages)
