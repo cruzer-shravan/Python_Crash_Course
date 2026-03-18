@@ -459,22 +459,131 @@
 
 # 8.11. Archived Messages
 
-def send_messages(messages, sent_messages):
-    while messages:
-        current_message = messages.pop()
-        sent_messages.append(current_message)
+# def send_messages(messages, sent_messages):
+#     while messages:
+#         current_message = messages.pop()
+#         sent_messages.append(current_message)
 
-def show_sent_messages(sent_messages):
-    print("The sent messages are:")
-    for sent_message in sent_messages:
-        print(sent_message)
+# def show_sent_messages(sent_messages):
+#     print("The sent messages are:")
+#     for sent_message in sent_messages:
+#         print(sent_message)
         
-    print("The original messages are:")
-    for message in messages:
-        print(message)
+#     print("The original messages are:")
+#     for message in messages:
+#         print(message)
 
-messages = ['i love you', 'i hate you', 'i miss you', 'i dont miss you']
-sent_messages = []
+# messages = ['i love you', 'i hate you', 'i miss you', 'i dont miss you']
+# sent_messages = []
 
-send_messages(messages[:], sent_messages)
-show_sent_messages(sent_messages)
+# send_messages(messages[:], sent_messages)
+# show_sent_messages(sent_messages)
+
+
+
+# '''PASSING AN ARBITRARY NUMBER OF ARGUMENTS'''
+
+# # Python allows a function to collect an arbitrary number of arguments from the calling statement.
+
+# def make_pizza(*toppings):          # * tells python to make a tuple called toppings.
+#     """Print the list of toppings that have been requested."""
+#     print(toppings)
+
+# make_pizza('pepperoni')
+# make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+# # Python packs the arguments into a tuple, even if the function receives only one value.
+
+# def make_pizza(*toppings):
+#     """Summarize the pizza we are about to make."""
+#     print("\nMaking a pizza with the following toppings:")
+#     for topping in toppings:
+#         print(f"- {topping}")
+
+# make_pizza('pepperoni')
+# make_pizza('mushrooms', 'green peppers', 'extra cheese')
+# # This syntax works no matter how many arguments the function receives.
+
+
+
+# '''MIXING POSITIONAL AND ARBITRARY ARGUMENTS'''
+
+# # Parameter that accepts an arbitrary number of arguments must be placed last in the function definition.
+
+# def make_pizza(size, *toppings):
+#     """Summarize the pizza we are about to make."""
+#     print(f"\nMaking a {size}-inch pizza with the following toppings:")
+#     for topping in toppings:
+#         print(f"- {topping}")
+
+# make_pizza(16, 'pepperoni')
+# make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+# # You'll often see the generic parameter name *args, 
+# # which collects arbitrary positional arguments like this.
+
+
+# '''USING ARBITRARY KEYWORD ARGUMENTS'''
+
+# # You can write functions that accept as may key-value pairs as the calling statement provides.
+
+# def build_profile(first, last, **user_info):
+#     """Build a dictionary containing everything we know about a user."""
+#     user_info['first_name'] = first
+#     user_info['last_name'] = last
+#     return user_info
+
+# user_profile = build_profile('albert', 'einstein', location='princeton', field = 'physics')
+# print(user_profile)
+
+# '''We can mix positional, keyword and arbitrary values in many different ways when writing your own functions.'''
+
+# '''You'll often see the parameter name **kwargs used to collect nonspecific KEYWORD ARGUMENTS.'''
+
+
+# """ TRY IT YOURSELF """
+
+# # 8.12. SANDWITCHES
+
+# def order_sandwich(*items):
+#     "Describes the items of the ordered sandwitch"
+#     print(f"{items}")
+
+# order_sandwich('cheese')
+# order_sandwich('chicken', 'grilled')
+# order_sandwich('club', 'tuna', 'peanut butter')
+
+
+# def order_sandwich(*items):
+#     "Describes the items of the ordered sandwitch"
+#     for item in items:
+#         print(f"{item.title()} sandwitch")
+
+# order_sandwich('cheese')
+# order_sandwich('chicken', 'grilled')
+# order_sandwich('club', 'tuna', 'peanut butter')
+
+
+# # 8.13. User Profile
+
+# def build_profile(first, last, **user_info):
+#     user_info['first_name'] = first
+#     user_info['last_name'] = last
+#     return user_info
+
+# self_profile = build_profile('Robert', 'downey', occupation = 'actor', famous_role = 'iron man')
+# print(self_profile)
+
+
+# # 8.14. CARS
+
+# def make_car(manufacturer, model, **car_details):
+#     """Describes the details about the car."""
+#     car_details['manufacturer'] = manufacturer
+#     car_details['model'] = model
+#     return car_details
+
+# car = make_car('subaru', 'outback', color = 'blue', tow_package = True)
+# print(car)
+
+
