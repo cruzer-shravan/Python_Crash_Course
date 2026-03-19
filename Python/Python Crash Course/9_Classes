@@ -1,0 +1,53 @@
+# OOP is one of the most effective approaches to writing software. 
+# In OOP, we write CLASSES that represent real-world things and situations
+# you create OBJECTS  bases on these classes.
+
+# When you write a class, you define the general behaviour that a whole category of objects can have.
+
+# INSTANTIATION - Making an object from a class
+# You work with instances of a class.
+
+# Specify the kind of information that can be stored in instances and
+# define actions that can be taken with these instances.
+
+# similar classes can share common functionality, to perform more with less code.
+
+# You'll store classes in modules and import classes written by other programmers into your own program files.
+# Knowing the logic behind classes will train you to think logically, 
+# so you can write programs that effectively address almost any problem you encounter.
+
+# classes help you take on increasingly complex challenges.
+
+
+'''CREATING AND USING A CLASS'''
+
+# you can model almost anything using classes.
+# classes represent the most common information of an object
+
+# After the class is written, we will use it to make individual instances, 
+# each of which represents one specific dog.
+
+'''CREATING THE DOG CLASS'''
+
+class Dog:                                
+    """A simple attempt to model a dog."""
+
+    def __init__(self, name, age):
+        """Initialize name and age attributes."""
+        self.name = name
+        self.age = age
+    
+    def sit(self):
+        """Simulate a dog sitting in response to a commond."""
+        print(f"{self.name} is now sitting.")
+    
+    def roll_over(self):
+        """Simulate rolling over in response to a command."""
+        print(f"{self.name} rolled over!")
+    
+
+# Capitalized names refer to classes in Python
+# No parantheses because we are creating this class from scratch.
+
+# A function thats part of a class is a method. e.g __init__() method.
+
