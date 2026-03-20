@@ -51,3 +51,123 @@ class Dog:
 
 # A function thats part of a class is a method. e.g __init__() method.
 
+# __init__ method is a special method that Python runs automatically
+#  whenever we create a new instance based on the Dog class
+
+# __  __ prevent Python's default method names from conflicting with your method names.
+# It has three parameters: self, name and age.
+# 'self' must be included in the definition because when python calls this method later (to create an instance of Dog)
+# the method call will automatically pass the 'self' argument
+
+# self refers to the instance itself.
+# whenever, we want to make an instance from the Dog class, 
+# we'll provide values for only the last two parameters (name, age)
+
+# Any variable prefixed with 'self' is available to every method in the class.
+# Variables that are accessible through instances are called 'ATTRIBUTES'.
+
+
+'''MAKING AN INSTANCE FROM A CLASS'''
+
+# Dog class is a set of instructions that tells Python how to make individual instances representing specific dogs.
+
+my_dog = Dog('Willie', 6)       # my_dog (lowercase name) refers to 'single instance' created from a class
+
+# The __init__method creates an instance representing this particular dog and 
+# sets the name and age attributes using the values we provided.
+
+
+print(f"My dog's name is {my_dog.name}.")
+print(f"My dog's  is {my_dog.age} years old.")
+
+'''ACCESSING ATTRIBUTES'''
+
+# DOT NOTATION  is used to access the attributes of an instance.
+
+my_dog.name
+
+
+'''CALLING METHODS'''
+
+# After we create an instance, we can use Dot notation to CALL ANY METHOD defined in Dog.
+print(f"\n")
+my_dog.sit()            # calling sit method
+my_dog.roll_over()      # calling roll_over method
+
+# Descriptive names like name, age, sit() and roll_over() help in easy inference of code.
+
+
+'''CREATING MULTIPLE INSTANCES'''
+
+your_dog = Dog('Scooby', 3)
+
+print(f"\nMy dog's name is {my_dog.name}.")
+print(f"{my_dog.name} is {my_dog.age} years old.")
+my_dog.sit()
+
+print(f"\nYour dog's name is {your_dog.name}.")
+print(f"{your_dog.name} is {your_dog.age} years old.")
+your_dog.roll_over()
+
+# You can make as many instances from one class as you need, 
+# as long as you give each instance a unique variable name or 
+# it occupies a unique spot in a list or dictionary.
+
+
+'''TRY IT YOURSELF'''
+
+# 9.1.  RESTAURANT
+
+class Restaurant:
+    def __init__(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+
+    def describe_restaurant(self):
+        print(f"\nThe restaurant's name is {self.restaurant_name.title()}.")
+        print(f"{self.restaurant_name.title()} hosts {self.cuisine_type.title()} cuisine.")
+    
+    def open_restaurant(self):
+        print(f"\nThe {self.restaurant_name} restaurant is OPEN.")
+
+restaurant = Restaurant('Bakasurra', 'south indian')
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+
+# 9.2.  THREE RESTAURANTS
+
+restaurant1 = Restaurant('f3 cafe and bistro', 'italian')
+restaurant1.describe_restaurant()
+
+restaurant2 = Restaurant('shang palace', 'chinese')
+restaurant2.describe_restaurant()
+
+# 9.3.  USERS
+
+class User:
+    def __init__(self, first_name, last_name, age, occupation):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.occupation = occupation
+    
+    def describe_user(self):
+        user_info = f"{self.first_name.title()} {self.last_name.title()}, {self.age}, {self.occupation.title()}"
+        print(f"Your info: {user_info}")
+    
+    def greet_user(self):
+        full_name = f"{self.first_name} {self.last_name}"
+        print(f"\nHello, {full_name.title()}!")
+
+user1 = User('johnny', 'dep', 51, 'actor')
+user1.greet_user()
+user1.describe_user()
+
+user2 = User('virat', 'kohli', 38, 'cricketer')
+user2.greet_user()
+user2.describe_user()
+
+user3 = User('abdul', 'kalam', 75, 'scientist')
+user3.greet_user()
+user3.describe_user()
