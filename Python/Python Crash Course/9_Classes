@@ -174,35 +174,143 @@
 
 
 
-'''WORKING WITH CLASSES AND INSTANCES'''
+# '''WORKING WITH CLASSES AND INSTANCES'''
 
-# Once you write a class, you'll spend most of your time working with instances created from that class.
-# First task - modify the attributes directly or write methods that update attributes in specific ways
+# # Once you write a class, you'll spend most of your time working with instances created from that class.
+# # First task - modify the attributes directly or write methods that update attributes in specific ways
 
-'''The Car class'''
+# '''The Car class'''
 
-class Car:
-    """A simple attempt to represent a car"""
+# class Car:
+#     """A simple attempt to represent a car"""
 
-    def __init__(self, make, model, year):
-        """Initialise attributes to describe a car."""
-        self.make = make
-        self.model = model
-        self.year = year
+#     def __init__(self, make, model, year):
+#         """Initialise attributes to describe a car."""
+#         self.make = make
+#         self.model = model
+#         self.year = year
 
-    def get_descriptive_name(self):
-        """Return a neatly formatted descriptive name."""
-        long_name = f"{self.year} {self.make} {self.model}"
-        return long_name.title()
+#     def get_descriptive_name(self):
+#         """Return a neatly formatted descriptive name."""
+#         long_name = f"{self.year} {self.make} {self.model}"
+#         return long_name.title()
     
-my_new_car = Car('mercedes', 'CLA350', '2026')
-print(my_new_car.get_descriptive_name())
+# my_new_car = Car('mercedes', 'CLA350', '2026')
+# print(my_new_car.get_descriptive_name())
 
-# Let's add an attribute that changes over time. We'll add an attribute that stores the car's overall mileage.
+# # Let's add an attribute that changes over time. We'll add an attribute that stores the car's overall mileage.
 
-'''SETTING A DEFAULT VALUE FOR AN ATTRIBUTE'''
+# '''SETTING A DEFAULT VALUE FOR AN ATTRIBUTE'''
 
-# When an instance is created, attributes can be defined without being passed in as parameters.
+# # When an instance is created, attributes can be defined without being passed in as parameters.
+
+# class Car:
+#     """A simple attempt to represent a car"""
+
+#     def __init__(self, make, model, year):
+#         """Initialise attributes to describe a car."""
+#         self.make = make
+#         self.model = model
+#         self.year = year
+#         self.odometer_reading = 0       # Python created a new attribute called odometer_reading and sets its initial value to 0.
+
+#     def get_descriptive_name(self):
+#         """Return a neatly formatted descriptive name."""
+#         long_name = f"{self.year} {self.make} {self.model}"
+#         return long_name.title()
+    
+#     def read_odometer(self):
+#         "Print a statement showing the car's mileage."
+#         print(f"This car has {self.odometer_reading} miles on it.")
+    
+# my_new_car = Car('mercedes', 'CLA350', '2026')
+# print(my_new_car.get_descriptive_name())
+# my_new_car.read_odometer()
+
+
+# '''MODIFYING ATTRIBUTE VALUES'''
+
+# # Attribute values can be changed in three ways.
+# #1 Directly through an instance
+# #2 Set the value through a method
+# #3 Increment the value (add a certain amount to it) through a method.
+
+# '''#1 - MODIFYING AN ATTRIBUTE'S VALUE DIRECTLY THROUGH AN INSTANCE'''
+
+# my_new_car.odometer_reading = 23
+# my_new_car.read_odometer()
+
+# '''#2 - MODIFYING AN ATTRIBUTE'S VALUE THROUGH A METHOD'''
+
+# class Car:
+#     """A simple attempt to represent a car"""
+
+#     def __init__(self, make, model, year):
+#         """Initialise attributes to describe a car."""
+#         self.make = make
+#         self.model = model
+#         self.year = year
+#         self.odometer_reading = 0       # Python created a new attribute called odometer_reading and sets its initial value to 0.
+
+#     def get_descriptive_name(self):
+#         """Return a neatly formatted descriptive name."""
+#         long_name = f"{self.year} {self.make} {self.model}"
+#         return long_name.title()
+    
+#     def read_odometer(self):
+#         "Print a statement showing the car's mileage."
+#         print(f"This car has {self.odometer_reading} miles on it.")
+    
+#     def update_odometer(self, mileage):                         # Addition of update_odometer
+#         """Set the odometer reading to the given value."""
+#         self.odometer_reading = mileage
+    
+# my_new_car = Car('mercedes', 'CLA350', '2026')
+# print(my_new_car.get_descriptive_name())
+
+# my_new_car.update_odometer(25)
+# my_new_car.read_odometer()
+
+
+# # add a little logic to make sure no one tries to roll back the odometer reading.
+
+# class Car:
+#     """A simple attempt to represent a car"""
+
+#     def __init__(self, make, model, year):
+#         """Initialise attributes to describe a car."""
+#         self.make = make
+#         self.model = model
+#         self.year = year
+#         self.odometer_reading = 0       # Python created a new attribute called odometer_reading and sets its initial value to 0.
+
+#     def get_descriptive_name(self):
+#         """Return a neatly formatted descriptive name."""
+#         long_name = f"{self.year} {self.make} {self.model}"
+#         return long_name.title()
+    
+#     def read_odometer(self):
+#         "Print a statement showing the car's mileage."
+#         print(f"This car has {self.odometer_reading} miles on it.")
+    
+#     def update_odometer(self, mileage):                         # Addition of update_odometer
+#         """Set the odometer reading to the given value.
+#         Reject the change if it attempts to roll back the odometer."""
+#         if mileage >= self.odometer_reading:
+#             self.odometer_reading = mileage
+#         else:
+#             print("You can't roll back on odometer.")
+    
+# my_new_car = Car('mercedes', 'CLA350', '2026')
+# print(my_new_car.get_descriptive_name())
+
+# my_new_car.update_odometer(15)
+# my_new_car.read_odometer()
+
+
+'''INCREMENTING AN ATTRIBUTE'S VALUE THROUGH A METHOD'''
+
+# We might want to increase an attribute's value by a certain amount, rather than set an entirely new value.
 
 class Car:
     """A simple attempt to represent a car"""
@@ -223,19 +331,25 @@ class Car:
         "Print a statement showing the car's mileage."
         print(f"This car has {self.odometer_reading} miles on it.")
     
-my_new_car = Car('mercedes', 'CLA350', '2026')
-print(my_new_car.get_descriptive_name())
-my_new_car.read_odometer()
+    def update_odometer(self, mileage):                         # Addition of update_odometer
+        """Set the odometer reading to the given value.
+        Reject the change if it attempts to roll back the odometer."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back on odometer.")
+    
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+my_used_car = Car('mercedes', 'CLA350', '2026')
+print(my_used_car.get_descriptive_name())
+
+my_used_car.update_odometer(25_600)
+my_used_car.read_odometer()
+
+my_used_car.increment_odometer(100)
+my_used_car.read_odometer()
 
 
-'''MODIFYING ATTRIBUTE VALUES'''
-
-# Attribute values can be changed in three ways.
-#1 Directly through an instance
-#2 Set the value through a method
-#3 Increment the value (add a certain amount to it) through a method.
-
-'''#1 - MODIFYING AN ATTRIBUTE'S VALUE DIRECTLY THROUGH AN INSTANCE'''
-
-my_new_car.odometer_reading = 23
-my_new_car.read_odometer()
