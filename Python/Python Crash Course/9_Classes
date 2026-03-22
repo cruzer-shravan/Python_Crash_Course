@@ -308,48 +308,88 @@
 # my_new_car.read_odometer()
 
 
-'''INCREMENTING AN ATTRIBUTE'S VALUE THROUGH A METHOD'''
+# '''INCREMENTING AN ATTRIBUTE'S VALUE THROUGH A METHOD'''
 
-# We might want to increase an attribute's value by a certain amount, rather than set an entirely new value.
+# # We might want to increase an attribute's value by a certain amount, rather than set an entirely new value.
 
-class Car:
-    """A simple attempt to represent a car"""
+# class Car:
+#     """A simple attempt to represent a car"""
 
-    def __init__(self, make, model, year):
-        """Initialise attributes to describe a car."""
-        self.make = make
-        self.model = model
-        self.year = year
-        self.odometer_reading = 0       # Python created a new attribute called odometer_reading and sets its initial value to 0.
+#     def __init__(self, make, model, year):
+#         """Initialise attributes to describe a car."""
+#         self.make = make
+#         self.model = model
+#         self.year = year
+#         self.odometer_reading = 0       # Python created a new attribute called odometer_reading and sets its initial value to 0.
 
-    def get_descriptive_name(self):
-        """Return a neatly formatted descriptive name."""
-        long_name = f"{self.year} {self.make} {self.model}"
-        return long_name.title()
+#     def get_descriptive_name(self):
+#         """Return a neatly formatted descriptive name."""
+#         long_name = f"{self.year} {self.make} {self.model}"
+#         return long_name.title()
     
-    def read_odometer(self):
-        "Print a statement showing the car's mileage."
-        print(f"This car has {self.odometer_reading} miles on it.")
+#     def read_odometer(self):
+#         "Print a statement showing the car's mileage."
+#         print(f"This car has {self.odometer_reading} miles on it.")
     
-    def update_odometer(self, mileage):                         # Addition of update_odometer
-        """Set the odometer reading to the given value.
-        Reject the change if it attempts to roll back the odometer."""
-        if mileage >= self.odometer_reading:
-            self.odometer_reading = mileage
-        else:
-            print("You can't roll back on odometer.")
+#     def update_odometer(self, mileage):                         # Addition of update_odometer
+#         """Set the odometer reading to the given value.
+#         Reject the change if it attempts to roll back the odometer."""
+#         if mileage >= self.odometer_reading:
+#             self.odometer_reading = mileage
+#         else:
+#             print("You can't roll back on odometer.")
     
-    def increment_odometer(self, miles):
-        """Add the given amount to the odometer reading."""
-        self.odometer_reading += miles
+#     def increment_odometer(self, miles):
+#         """Add the given amount to the odometer reading."""
+#         self.odometer_reading += miles
 
-my_used_car = Car('mercedes', 'CLA350', '2026')
-print(my_used_car.get_descriptive_name())
+# my_used_car = Car('mercedes', 'CLA350', '2026')
+# print(my_used_car.get_descriptive_name())
 
-my_used_car.update_odometer(25_600)
-my_used_car.read_odometer()
+# my_used_car.update_odometer(25_600)
+# my_used_car.read_odometer()
 
-my_used_car.increment_odometer(100)
-my_used_car.read_odometer()
+# my_used_car.increment_odometer(100)
+# my_used_car.read_odometer()
 
 
+'''TRY IT YOURSELF'''
+
+# 9.4 NUMBER SERVED
+
+class Restaurant:
+    def __init__(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 0
+
+    def describe_restaurant(self):
+        print(f"\nThe restaurant's name is {self.restaurant_name.title()}.")
+        print(f"{self.restaurant_name.title()} hosts {self.cuisine_type.title()} cuisine.")
+        print(f"The number of customers the restaurant has served so far is {self.number_served}.")
+        print(f"The restaurant served an additional {self.last_increment} customers, totalling to {self.total_served}.")   # added due to increment
+    
+    def open_restaurant(self):
+        print(f"The {self.restaurant_name} restaurant is OPEN.")
+
+    def set_number_served(self, number_served):                         # Addition of update_odometer
+        """Sets the number of customers served to new value."""
+        self.number_served = number_served
+    
+    def increment_number_served (self, additional_increment):
+        self.total_served = self.number_served + additional_increment
+        self.last_increment =  additional_increment
+
+# First object
+restaurant = Restaurant('Bakasurra', 'south indian')
+restaurant.open_restaurant()
+restaurant.set_number_served(15)    # Upodated after printing the description, so not printed
+restaurant.increment_number_served(35)
+restaurant.describe_restaurant()
+
+
+# # Second object
+restaurant1 = Restaurant('Chings', 'chinese')
+restaurant1.set_number_served(25)
+restaurant1.increment_number_served(75)
+restaurant1.describe_restaurant()
