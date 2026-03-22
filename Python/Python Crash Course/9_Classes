@@ -353,43 +353,185 @@
 # my_used_car.read_odometer()
 
 
-'''TRY IT YOURSELF'''
+# '''TRY IT YOURSELF'''
 
-# 9.4 NUMBER SERVED
+# # 9.4 NUMBER SERVED
 
-class Restaurant:
-    def __init__(self, restaurant_name, cuisine_type):
-        self.restaurant_name = restaurant_name
-        self.cuisine_type = cuisine_type
-        self.number_served = 0
+# class Restaurant:
+#     def __init__(self, restaurant_name, cuisine_type):
+#         self.restaurant_name = restaurant_name
+#         self.cuisine_type = cuisine_type
+#         self.number_served = 0
 
-    def describe_restaurant(self):
-        print(f"\nThe restaurant's name is {self.restaurant_name.title()}.")
-        print(f"{self.restaurant_name.title()} hosts {self.cuisine_type.title()} cuisine.")
-        print(f"The number of customers the restaurant has served so far is {self.number_served}.")
-        print(f"The restaurant served an additional {self.last_increment} customers, totalling to {self.total_served}.")   # added due to increment
+#     def describe_restaurant(self):
+#         print(f"\nThe restaurant's name is {self.restaurant_name.title()}.")
+#         print(f"{self.restaurant_name.title()} hosts {self.cuisine_type.title()} cuisine.")
+#         print(f"The number of customers the restaurant has served so far is {self.number_served}.")
+#         print(f"The restaurant served an additional {self.last_increment} customers, totalling to {self.total_served}.")   # added due to increment
     
-    def open_restaurant(self):
-        print(f"The {self.restaurant_name} restaurant is OPEN.")
+#     def open_restaurant(self):
+#         print(f"The {self.restaurant_name} restaurant is OPEN.")
 
-    def set_number_served(self, number_served):                         # Addition of update_odometer
-        """Sets the number of customers served to new value."""
-        self.number_served = number_served
+#     def set_number_served(self, number_served):                         # Addition of update_odometer
+#         """Sets the number of customers served to new value."""
+#         self.number_served = number_served
     
-    def increment_number_served (self, additional_increment):
-        self.total_served = self.number_served + additional_increment
-        self.last_increment =  additional_increment
+#     def increment_number_served (self, additional_increment):
+#         self.total_served = self.number_served + additional_increment
+#         self.last_increment =  additional_increment
 
-# First object
-restaurant = Restaurant('Bakasurra', 'south indian')
-restaurant.open_restaurant()
-restaurant.set_number_served(15)    # Upodated after printing the description, so not printed
-restaurant.increment_number_served(35)
-restaurant.describe_restaurant()
+# # First object
+# restaurant = Restaurant('Bakasurra', 'south indian')
+# restaurant.open_restaurant()
+# restaurant.set_number_served(15)    # Upodated after printing the description, so not printed
+# restaurant.increment_number_served(35)
+# restaurant.describe_restaurant()
 
 
-# # Second object
-restaurant1 = Restaurant('Chings', 'chinese')
-restaurant1.set_number_served(25)
-restaurant1.increment_number_served(75)
-restaurant1.describe_restaurant()
+# # # Second object
+# restaurant1 = Restaurant('Chings', 'chinese')
+# restaurant1.set_number_served(25)
+# restaurant1.increment_number_served(75)
+# restaurant1.describe_restaurant()
+
+
+# # 9.5.  LOGIN ATTEMPTS
+
+# class User:
+#     def __init__(self, first_name, last_name, age, occupation):
+#         self.first_name = first_name
+#         self.last_name = last_name
+#         self.age = age
+#         self.occupation = occupation
+#         self.login_attempts = 0
+    
+#     def describe_user(self):
+#         user_info = f"Name: {self.first_name.title()} {self.last_name.title()}, \n\tAge: {self.age}, \n\tOccupation: {self.occupation.title()}, \n\tlogin attempts: {self.login_attempts}"
+#         print(f"\nUser info: {user_info}")
+    
+#     def greet_user(self):
+#         full_name = f"{self.first_name} {self.last_name}"
+#         print(f"\nHello, {full_name.title()}!")
+    
+#     def increment_login_attempts(self):
+#         self.login_attempts += 1
+    
+#     def reset_login_attempts(self):
+#         self.login_attempts = 0
+
+# print("Results after login attempts:")
+
+# user1 = User('johnny', 'dep', 51, 'actor')
+# user1.increment_login_attempts()
+# user1.describe_user()
+
+# user2 = User('virat', 'kohli', 38, 'cricketer')
+# user2.increment_login_attempts()
+# user2.increment_login_attempts()
+# user2.describe_user()
+
+# user3 = User('abdul', 'kalam', 75, 'scientist')
+# user3.increment_login_attempts()
+# user3.increment_login_attempts()
+# user3.increment_login_attempts()
+# user3.describe_user()
+
+# # Reset login attempts
+
+# print("\nResults after resetting attempts:")
+# user1.reset_login_attempts()
+# user1.describe_user()
+
+# user2.reset_login_attempts()
+# user2.describe_user()
+
+# user3.reset_login_attempts()
+# user3.describe_user()
+
+
+'''INHERITANCE'''
+
+# Inheritance is used to write a specialized version of another class (child class).
+# It takes on the attributes and methods of the first class (parent class).
+# The child class can inherit any or all of the attributes and methods of its parent class, but,
+# It's also free to define new attributes and methods of its own.
+
+'__init__() Method for a Child Class' 
+
+# Model an ElectricCar sub-class on the Car parent-class and call  the __init__() method from the parent class.
+# The parent class must be part of the current file and must appear before the child class in the file.
+# Parent class must be included in the parentheses.
+
+# super() function is a special function that allows to call a method from the parent class.
+# The name 'super' comes from the convention of calling the parent class a 'superclass' and the child class a 'subclass'
+
+class Car:
+    """A simple attempt to represent a car"""
+
+    def __init__(self, make, model, year):
+        """Initialise attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0       # Python created a new attribute called odometer_reading and sets its initial value to 0.
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make.title()} {self.model.title()}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        "Print a statement showing the car's mileage."
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):                         # Addition of update_odometer
+        """Set the odometer reading to the given value.
+        Reject the change if it attempts to roll back the odometer."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back on odometer.")
+    
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+    
+
+class ElectricCar(Car):
+    """Represents aspects of a car, specific to electric vehicles."""
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024)
+print(my_leaf.get_descriptive_name())
+
+
+class ElectricCar1(Car):
+    """Initializes attributes of parent class."""
+    """Then initialize attributes specific to an electric car."""
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+        self.battery_size = 40                  # There is no limit on how much you can specialize the ElectricCar class to whatever degree of accuracy you need.
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size} kWh battery.")
+
+my_leaf = ElectricCar1('nissan', 'leaf', 2024)
+print(my_leaf.get_descriptive_name())
+my_leaf.describe_battery()
+
+
+'''Overriding Methods from the Parent Class'''
+
+# You can override any method from the parent class that doesn't fit what you're trying to model with the child class.
+# You define a method in the child class with the same name as the method you want to override in the parent class.
+
+class ElectricCar(Car):
+
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks."""
+        print("This car does not have a gas tank coz its electric!")
+
+# The above code will run in case if any one calls the fill_gas_tank method within ElectricCar class, provided,
+# same fill_gas_tank method is also available in Car superclass.
