@@ -696,16 +696,29 @@ class Admin(User):
 class Privileges:
     """A class to store admin's privileges"""
 
-    def __init__(self, privileges = []):
-        self.privileges = privileges
+    def __init__(self, privileges = None):
+        if privileges == None:
+            print("This user has no privileges.")
+        self.privileges_list = privileges
     
     def show_privileges(self):
         """Displays the set of privileges provided to the Administrator."""
         print("The adminstrator has the following privileges:")
-        for privilege in self.privileges:
+        for privilege in self.privileges_list:
             print(f"- {privilege.title()}")
 
 manager = Admin('amit', 'shah', 38, 'Manager')
-manager.privileges = ["can add post", 'can delete post', 'can ban user']
-manager.describe_user()
+manager.privileges.privileges_list = ["can add post", 'can delete post', 'can ban user']
 manager.privileges.show_privileges()
+
+sales_person = Admin('salman', 'khan', 48, 'sales person')
+sales_person.privileges.privileges_list = []
+# sales_person.privileges.show_privileges()
+
+
+'''
+🧠 Key Takeaway
+
+👉 Don’t overwrite objects with different types
+👉 Modify attributes inside the object instead
+'''
