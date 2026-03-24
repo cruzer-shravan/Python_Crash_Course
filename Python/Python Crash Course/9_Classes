@@ -566,6 +566,10 @@
 #             range = 225
         
 #         print(f"This car has a range of {range} miles on a full charge.")
+    
+#     def upgrade_battery(self):
+#         if self.battery_size != 65:
+#             self.battery_size = 65
 
 
 # class ElectricCar2(Car):
@@ -641,29 +645,29 @@
 # masquati.icecream_flavours()
 
 
-# 9.7.  ADMIN
+# # 9.7.  ADMIN
 
-class User:
-    def __init__(self, first_name, last_name, age, occupation):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
-        self.occupation = occupation
-        self.login_attempts = 0
+# class User:
+#     def __init__(self, first_name, last_name, age, occupation):
+#         self.first_name = first_name
+#         self.last_name = last_name
+#         self.age = age
+#         self.occupation = occupation
+#         self.login_attempts = 0
     
-    def describe_user(self):
-        user_info = f"Name: {self.first_name.title()} {self.last_name.title()}, \n\tAge: {self.age}, \n\tOccupation: {self.occupation.title()}, \n\tlogin attempts: {self.login_attempts}"
-        print(f"\nUser info: {user_info}")
+#     def describe_user(self):
+#         user_info = f"Name: {self.first_name.title()} {self.last_name.title()}, \n\tAge: {self.age}, \n\tOccupation: {self.occupation.title()}, \n\tlogin attempts: {self.login_attempts}"
+#         print(f"\nUser info: {user_info}")
     
-    def greet_user(self):
-        full_name = f"{self.first_name} {self.last_name}"
-        print(f"\nHello, {full_name.title()}!")
+#     def greet_user(self):
+#         full_name = f"{self.first_name} {self.last_name}"
+#         print(f"\nHello, {full_name.title()}!")
     
-    def increment_login_attempts(self):
-        self.login_attempts += 1
+#     def increment_login_attempts(self):
+#         self.login_attempts += 1
     
-    def reset_login_attempts(self):
-        self.login_attempts = 0
+#     def reset_login_attempts(self):
+#         self.login_attempts = 0
 
 
 # class Admin(User):
@@ -684,41 +688,153 @@ class User:
 # manager.show_privileges()
 
 
-# 9.8.  PRIVILEGES
+# # 9.8.  PRIVILEGES
 
-class Admin(User):
-    """Represents the privileges provided to Admin."""
-    def __init__(self, first_name, last_name, age, occupation):
-        super().__init__(first_name, last_name, age, occupation)
-        self.privileges = Privileges()
+# class Admin(User):
+#     """Represents the privileges provided to Admin."""
+#     def __init__(self, first_name, last_name, age, occupation):
+#         super().__init__(first_name, last_name, age, occupation)
+#         self.privileges = Privileges()
 
 
-class Privileges:
-    """A class to store admin's privileges"""
+# class Privileges:
+#     """A class to store admin's privileges"""
 
-    def __init__(self, privileges = None):
-        if privileges == None:
-            print("This user has no privileges.")
-        self.privileges_list = privileges
+#     def __init__(self, privileges = None):
+#         if privileges == None:
+#             print("This user has no privileges.")
+#         self.privileges_list = privileges
     
-    def show_privileges(self):
-        """Displays the set of privileges provided to the Administrator."""
-        print("The adminstrator has the following privileges:")
-        for privilege in self.privileges_list:
-            print(f"- {privilege.title()}")
+#     def show_privileges(self):
+#         """Displays the set of privileges provided to the Administrator."""
+#         print("The adminstrator has the following privileges:")
+#         for privilege in self.privileges_list:
+#             print(f"- {privilege.title()}")
 
-manager = Admin('amit', 'shah', 38, 'Manager')
-manager.privileges.privileges_list = ["can add post", 'can delete post', 'can ban user']
-manager.privileges.show_privileges()
+# manager = Admin('amit', 'shah', 38, 'Manager')
+# manager.privileges.privileges_list = ["can add post", 'can delete post', 'can ban user']
+# manager.privileges.show_privileges()
 
-sales_person = Admin('salman', 'khan', 48, 'sales person')
-sales_person.privileges.privileges_list = []
-# sales_person.privileges.show_privileges()
+# sales_person = Admin('salman', 'khan', 48, 'sales person')
+# sales_person.privileges.privileges_list = []
+# # sales_person.privileges.show_privileges()
 
 
-'''
-🧠 Key Takeaway
+# '''
+# 🧠 Key Takeaway
 
-👉 Don’t overwrite objects with different types
-👉 Modify attributes inside the object instead
-'''
+# 👉 Don’t overwrite objects with different types
+# 👉 Modify attributes inside the object instead
+# '''
+
+
+# # 9.9.  Battery upgrade
+
+# class ElectricCar2(Car):
+#     """Initializes attributes of parent class."""
+#     """Then initialize attributes specific to an electric car."""
+#     def __init__(self, make, model, year):
+#         super().__init__(make, model, year)
+#         self.battery = Battery()                  # Calling the instance from the class Battery
+
+#     def describe_battery(self):
+#         """Print a statement describing the battery size."""
+#         print(f"This car has a {self.battery_size} kWh battery.")
+    
+
+# my_leaf = ElectricCar2('nissan', 'leaf', 2024)
+# print(my_leaf.get_descriptive_name())
+# my_leaf.battery.describe_battery()
+# my_leaf.battery.get_range()
+# print("If the current battery size != 65, Then the battery will be upgraded to 65 kWh.")
+# my_leaf.battery.upgrade_battery()
+# my_leaf.battery.describe_battery()
+# my_leaf.battery.get_range()
+
+
+# '''IMPORTING CLASSES'''
+
+# # Your files can get long, even when you use inheritance and composition properly.
+# # In keeping with th overall philosophy of Python, you'll want to keep your files as uncluttered as possible.
+# # Python let's you to store classes in modules and then import the classes you need into your main program.
+
+
+# '''Importing a Single Class'''
+
+# from car import Car
+
+# my_new_car = Car('audi', 'a4', 2024)
+# print(my_new_car.get_descriptive_name())
+
+# my_new_car.odometer_reading = 23
+# my_new_car.read_odometer()
+
+# # Importing classes is an efficient way to program.
+# # Its adviced to move the class to a module and import the module.
+# # you still get all the same functionality, 
+# # but you keep your main program file clean and easy to read.
+# # You also store most of the logic in separate files.
+# # Importing classes helps to focus on the higher level logic of your main program.
+
+# '''Storing multiple classes in a Module'''
+
+# # classes Battery and ElectricCar both help represent cars, so let's add them to the module car.py
+
+# 'Check car.py and my_electric_car.py'
+
+# """Importing multiple Classes from a Module"""
+
+# # importing two classes in the same file
+
+# from car import Car, ElectricCar
+
+# my_mustang = Car('ford', 'mustang', 2025)
+# print(my_mustang.get_descriptive_name())
+
+# my_leaf = ElectricCar('nissan', 'leaf', 2025)
+# print(my_leaf.get_descriptive_name())
+
+
+# '''Importing an entire Module'''
+
+# import car
+
+# my_tesla = Car('tesla', 'model-s', 2026)
+# print(my_tesla.get_descriptive_name())
+
+# my_leaf1 = ElectricCar('nissan', 'leaf1', 2026)
+# print(my_leaf1.get_descriptive_name())
+
+
+# '''Importing all classes from a Module'''
+
+# from car import *
+
+# # This method is not recommended.
+# # Reason - With this approach it’s unclear which classes you’re using from the module.
+# # This approach can also lead to confusion with names in the file. 
+# # Sometimes importing a class with the same name as something else in the program,
+# # can create errors that are hard to diagnose.
+
+# '''Importing a Module into a Module'''
+
+# # When you store your classes in several modules, 
+# # you may find that a class in one module depends on a class in another module.
+# # When this happens, you can import the required class into the first module.
+
+# '''
+# We have added Battery and ElectricCar classes in my_electric_car.py and
+# removed these both classes from car.py
+# we created a new file and imported both modules (Car and ElectricCar)
+# '''
+
+"""Using ALIASES"""
+
+from my_electric_car import ElectricCar as EC
+myleaf = EC('nissan', 'leaf', 2026)
+print(myleaf.get_descriptive_name()) 
+
+import my_electric_car as ec
+myleaf1 = ec.ElectricCar('nissan', 'leaf1', 2025)
+print(myleaf1.get_descriptive_name())
+
