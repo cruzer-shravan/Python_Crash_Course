@@ -10,7 +10,8 @@ class User:
     
     def describe_user(self):
         user_info = f"Name: {self.first_name.title()} {self.last_name.title()}, \n\tAge: {self.age}, \n\tOccupation: {self.occupation.title()}, \n\tlogin attempts: {self.login_attempts}"
-        print(f"\nUser info: {user_info}")
+        print("The description of the user is appended below: ")
+        print(f"User info: {user_info}")
     
     def greet_user(self):
         full_name = f"{self.first_name} {self.last_name}"

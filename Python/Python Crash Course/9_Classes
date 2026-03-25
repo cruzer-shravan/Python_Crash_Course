@@ -143,7 +143,7 @@
 # restaurant2 = Restaurant('shang palace', 'chinese')
 # restaurant2.describe_restaurant()
 
-# # 9.3.  USERS
+# 9.3.  USERS
 
 # class User:
 #     def __init__(self, first_name, last_name, age, occupation):
@@ -151,11 +151,12 @@
 #         self.last_name = last_name
 #         self.age = age
 #         self.occupation = occupation
-    
+   
 #     def describe_user(self):
 #         user_info = f"{self.first_name.title()} {self.last_name.title()}, {self.age}, {self.occupation.title()}"
-#         print(f"Your info: {user_info}")
-    
+#         print("The description of the user is appended below: ")
+#         print(f"User info: {user_info}")
+   
 #     def greet_user(self):
 #         full_name = f"{self.first_name} {self.last_name}"
 #         print(f"\nHello, {full_name.title()}!")
@@ -406,8 +407,9 @@
 #         self.login_attempts = 0
     
 #     def describe_user(self):
-#         user_info = f"Name: {self.first_name.title()} {self.last_name.title()}, \n\tAge: {self.age}, \n\tOccupation: {self.occupation.title()}, \n\tlogin attempts: {self.login_attempts}"
-#         print(f"\nUser info: {user_info}")
+#         user_info = f"{self.first_name.title()} {self.last_name.title()}, {self.age}, {self.occupation.title()}"
+#         print("The description of the user is appended below: ")
+#         print(f"User info: {user_info}")
     
 #     def greet_user(self):
 #         full_name = f"{self.first_name} {self.last_name}"
@@ -656,8 +658,9 @@
 #         self.login_attempts = 0
     
 #     def describe_user(self):
-#         user_info = f"Name: {self.first_name.title()} {self.last_name.title()}, \n\tAge: {self.age}, \n\tOccupation: {self.occupation.title()}, \n\tlogin attempts: {self.login_attempts}"
-#         print(f"\nUser info: {user_info}")
+#         user_info = f"{self.first_name.title()} {self.last_name.title()}, {self.age}, {self.occupation.title()}"
+#         print("The description of the user is appended below: ")
+#         print(f"User info: {user_info}")
     
 #     def greet_user(self):
 #         full_name = f"{self.first_name} {self.last_name}"
@@ -856,27 +859,51 @@
 # restaurant1.describe_restaurant()
 # restaurant1.open_restaurant()
 
-# 9.11. Imported Admin
+# # 9.11. Imported Admin
 
-from my_admin import User, Admin, Privileges
+# from my_admin import User, Admin, Privileges
 
-hitler = User('adolph', 'hitler', 85, 'ruler')
-hitler.greet_user()
-hitler.describe_user()
+# hitler = User('adolph', 'hitler', 85, 'ruler')
+# hitler.greet_user()
+# hitler.describe_user()
 
 
-eric = Admin('eric', 'matthes', 55, 'educator')
-eric.describe_user()
+# eric = Admin('eric', 'matthes', 55, 'educator')
+# eric.describe_user()
 
-eric_privileges = [
-    'unlimited access',
-    'termination',
-    'recruitment'
+# eric_privileges = [
+#     'unlimited access',
+#     'termination',
+#     'recruitment'
+#     ]
+
+# # assign privileges properly
+# eric.privileges = Privileges(eric_privileges)
+
+# print(f"\nThe admin {eric.first_name.title()} has these privileges: ")
+# eric.privileges.show_privileges()
+
+
+# 9.12. Multiple modules
+
+from user import User
+from admin_privileges import Admin, Privileges
+
+sundar = User('sundar', 'pichai', 50, 'CEO')
+sundar.describe_user()
+
+sundar = Admin("sundar", 'pichai', 50, 'CEO')
+
+privileges = [
+    'Install or uninstall software',
+    'Change system settings',
+    'Access restricted files and folders',
+    'Manage other user accounts'
     ]
 
-# assign privileges properly
-eric.privileges = Privileges(eric_privileges)
+# privileges = []
 
-print(f"\nThe admin {eric.first_name.title()} has these privileges: ")
-eric.privileges.show_privileges()
+sundar.privileges = Privileges(privileges)
+
+
 
