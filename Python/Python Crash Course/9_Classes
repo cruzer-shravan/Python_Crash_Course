@@ -828,13 +828,55 @@
 # we created a new file and imported both modules (Car and ElectricCar)
 # '''
 
-"""Using ALIASES"""
+# """Using ALIASES"""
 
-from my_electric_car import ElectricCar as EC
-myleaf = EC('nissan', 'leaf', 2026)
-print(myleaf.get_descriptive_name()) 
+# from my_electric_car import ElectricCar as EC
+# myleaf = EC('nissan', 'leaf', 2026)
+# print(myleaf.get_descriptive_name()) 
 
-import my_electric_car as ec
-myleaf1 = ec.ElectricCar('nissan', 'leaf1', 2025)
-print(myleaf1.get_descriptive_name())
+# import my_electric_car as ec
+# myleaf1 = ec.ElectricCar('nissan', 'leaf1', 2025)
+# print(myleaf1.get_descriptive_name())
+
+# '''FINDING YOUR OWN WORKFLOW'''
+# # Python gives you many options for how to structure code in a large project.
+# # It’s important to know all these possibilities so you can determine,
+# # the best ways to organize your projects as well as understand other people’s projects.
+# # When you’re starting out, keep your code structure simple.
+# # Try doing everything in one file and moving your classes to separate modules once everything is working.
+
+
+# '''TRY IT YOURSELF'''
+
+# # 9.10. Imported Restaurant
+
+# from my_restaurant import Restaurant
+
+# restaurant1 = Restaurant('bakasurra', 'south indian')
+# restaurant1.describe_restaurant()
+# restaurant1.open_restaurant()
+
+# 9.11. Imported Admin
+
+from my_admin import User, Admin, Privileges
+
+hitler = User('adolph', 'hitler', 85, 'ruler')
+hitler.greet_user()
+hitler.describe_user()
+
+
+eric = Admin('eric', 'matthes', 55, 'educator')
+eric.describe_user()
+
+eric_privileges = [
+    'unlimited access',
+    'termination',
+    'recruitment'
+    ]
+
+# assign privileges properly
+eric.privileges = Privileges(eric_privileges)
+
+print(f"\nThe admin {eric.first_name.title()} has these privileges: ")
+eric.privileges.show_privileges()
 
