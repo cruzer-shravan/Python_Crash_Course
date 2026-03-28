@@ -907,3 +907,8 @@ sundar.privileges = Privileges(privileges)
 
 
 
+# Look for the below exercises in other 9.1_Random_module.py modules
+# 9.13 Dice
+# 9.14. Lottery
+# 9.15. Lottery Analysis
+# 9.16. Python Module of the Week (https://pymotw.com)

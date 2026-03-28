@@ -1,0 +1,14 @@
+# You must sometimes do some wrangling to arrange messy data into a more nicely tabular (or structured) form.
+
+# Python is an interpreted language. 
+# The Python interpreter runs a program by executing one statement at a time.
+# The standard interactive Python interpreter can be invoked on the command line with the python command:
+
+import numpy as np
+data = [np.random.standard_normal() for i in range(7)]
+data
+
+# Many kinds of Python objects are formatted to be more readable, or prettyprinted,
+# which is distinct from normal printing with print
+
+# OPEN JUPYTER NOTEBOOK
