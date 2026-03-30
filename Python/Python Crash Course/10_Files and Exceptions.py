@@ -182,22 +182,163 @@ from pathlib import Path
 # # If the file already exists, write_text() will erase the
 # # current contents of the file and write new contents to the file.
 
-'''TRY IT YOURSELF'''
+# '''
+#  "w" → 🧹 Erase board, then write
+# "a" → ✍️ Keep writing on the board
+# '''
 
-# 10.4. Guest
 
-user_name = input("Enter your name: ").lower()
+# '''TRY IT YOURSELF'''
+
+# # 10.4. Guest / 10.5. Guest book
+
+# from pathlib import Path
+
+# base_dir = Path(__file__).parent
+# path = base_dir / "guest.txt"
+
+# while True:
+#     print("Enter your name or type 'q' to exit!")
+#     user_name = input("Enter your name: ").lower()
+    
+#     if user_name == 'q':
+#         break
+#     else:
+#         with open(path, "a") as file:
+#             file.write(f"{user_name}\n")
+
+
+# '''EXCEPTIONS'''
+
+# # Python uses special objects called exceptions to manage errors that arise during a program’s execution.
+# # If you write code that handles the exception, the program will continue running.
+# # If you don’t handle the exception, the program will halt and show a traceback,
+# # which includes a report of the exception that was raised.
+
+# # Exceptions are handled with try-except blocks. 
+# # A try-except block asks Python to do something, 
+# # but it also tells Python what to do if an exception is raised.
+
+# '''Handling the ZeroDivisionError (Division by zero) Exception'''
+
+# # You probably know that it’s impossible to divide a number by zero,
+# # but let’s ask Python to do it anyway.
+
+# 'print(5/0)'
+
+# # The above print code reports a traceback error, ZeroDivisionError, is an exception object.
+# # We can use this information to modify our program.
+# # We’ll tell Python what to do when this kind of exception occurs
+
+
+# '''Using try-except Blocks'''
+
+# # When you think an error may occur, you can write a tryexcept block to handle the exception that might be raised.
+# # try-except Block tells Python what to do if the code results in a particular kind of exception.
+
+# 'try-except block for handling the ZeroDivisonError'
+
+# try:
+#     print(5/0)
+# except ZeroDivisionError:
+#     print("You can't divide by zero!")  # user sees a friendly error message instead of a traceback
+
+# # If the code in the try block causes an error, Python looks for an except block whose error matches the
+# # one that was raised, and runs the code in that block.
+
+# # If more code followed the try-except block, 
+# # the program would continue running because we told Python how to handle the error.
+
+
+# '''Using Exveptions to prevent crashes'''
+
+# # Simple Calculator that does only division:
+
+# print("Give me two numbers and I'll divide them.")
+# print("Enter 'q' to quit.")
+
+# while True:
+#     first_num = input("\nFirst number: ")
+#     if first_num == 'q':
+#         break
+#     second_num = input("\nSecond number: ")
+#     if second_num == 'q':
+#         break
+#     answer = int(first_num)/ int(second_num)
+#     print(f"Result: {answer}")
+
+#     try_again = input("Enter 'y' to try again: ").lower()
+#     if try_again != 'y':
+#         print("Thank you. See you soon!")
+#         break
+
+
+# It’s bad that the program crashed (ZeroDivisionError),
+# but it’s also not a good idea to let users see tracebacks.
+# Nontechnical users will be confused by them, 
+# and in a malicious setting, attackers will learn more than you want them to.
+
+# A skilled attacker can sometimes use this information to determine which kind
+# of attacks to use against your code.
+
+
+# '''The else block'''
+
+# # We can make this program more error resistant by wrapping
+# # the line that might produce errors in a try-except block.
+
+# # Any code that depends on the try block executing successfully goes in the else block
+
+# while True:
+#     first_num = input("\nFirst number: ")
+#     if first_num == 'q':
+#         break
+#     second_num = input("\nSecond number: ")
+#     if second_num == 'q':
+#         break
+    
+#     # The only code that should go in a try block is the code that
+#     # might cause an exception to be raised.
+    
+#     try:                
+#         answer = int(first_num)/ int(second_num)
+#     except ZeroDivisionError:
+#         print("You can't divide by a number by 0")
+#     else:
+#         print(f"Result: {answer}")
+
+#     try_again = input("Enter 'y' to try again: ").lower()
+#     if try_again != 'y':
+#         print("Thank you. See you soon!")
+#         break
+
+
+'''Handling the FileNotFoundError Exception'''
+
+# One common issue when working with files is handling missing files
+# (different location, incorrect filename or the file might not exist at all.)
 
 from pathlib import Path
+path = Path('alice.txt')    # file not saved in cwd
 
-base_dir = Path(__file__).parent
-path = base_dir / "guest.txt"
+# contents = path.read_text(encoding='utf-8')
 
-user = ''
-while True:
-    print("Enter your name or type 'q' to exit!")
-    if user_name == 'q':
-        break
-    else:
-        user += user_name
-        path.write_text(user)
+# we’re using read_text() in a slightly different way.
+# encoding argument is needed when your system’s default encoding doesn’t match
+# the encoding of the file that’s being read.
+# reading from a file that wasn’t created on your system.
+
+# Python can’t read from a missing file, so it raises an exception: 'FileNotFoundError'
+
+# It’s often best to start at the very end of the complex traceback.
+# This is important because it tells us what kind of exception to use in the except block that we’ll write.
+
+
+try:
+   contents = path.read_text(encoding="utf-8") 
+except FileNotFoundError:
+   print(f"Sorry, the file {path} does not exist.")
+
+# the code in the try block produces a FileNotFoundError,
+# so we write an except block that matches that error
+
