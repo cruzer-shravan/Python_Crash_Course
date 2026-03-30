@@ -2,11 +2,11 @@
 
 # '''Reading the contents of a file'''
 
-from pathlib import Path
+# from pathlib import Path
 
-path = Path('D:\Data science\Programming Languages\Python\Elite\Python\Python Crash Course\pi_digits.txt')
-contents = path.read_text()
-print(contents)
+# path = Path('D:\Data science\Programming Languages\Python\Elite\Python\Python Crash Course\pi_digits.txt')
+# contents = path.read_text()
+# print(contents)
 
 # contents = contents.rstrip()
 # print(contents)
@@ -106,14 +106,14 @@ print(contents)
 
 
 
-"""TRY IT YOURSELF"""
+# """TRY IT YOURSELF"""
 
-# 10.1. LEARNING PYTHON
+# # 10.1. LEARNING PYTHON
 
-from pathlib import Path
+# from pathlib import Path
 
-path = Path("D:\Data science\Programming Languages\Python\Elite\Python\Python Crash Course\learning_python.txt")
-contents = path.read_text()
+# path = Path("D:\Data science\Programming Languages\Python\Elite\Python\Python Crash Course\learning_python.txt")
+# contents = path.read_text()
 # print(contents)
 
 # lines = contents.splitlines()
@@ -135,7 +135,69 @@ contents = path.read_text()
 
 # 10.3. Simpler code
 
-for line in contents.splitlines():
-    print(line)
+# for line in contents.splitlines():
+#     print(line)
 
 
+'''WRITING TO A FILE - Simplest way to save data is to write it to a file'''
+
+'WRIITING A SINGLE LINE'
+
+# Once you have a path defined, you can write to a file using the write_text() method.
+
+from pathlib import Path
+# path = Path('programming.txt')
+# path.write_text("I love programming.")
+
+# print(path.resolve())
+
+# import os
+# print(os.getcwd())
+
+# base_dir = Path(__file__).parent
+# path = base_dir / "programming.txt"
+
+# path.write_text("I am enjoying programming")
+
+# # NOTE: Python can only write strings to a text file.
+
+
+# 'WRITING MULTIPLE LINES'
+
+# # The write_text() method does a few things behind the scenes.
+# # If the file that path points to doesn’t exist, it creates that file. 
+# # Also, after writing the string to the file, it makes sure the file is closed properly. 
+# # Files that aren’t closed properly can lead to missing or corrupted data.
+
+# # Writing several line to the programming.txt
+
+# contents = "I love creating new games.\n"
+# contents += "I also love working with data.\n"  # There is no limit to the length of your strings.
+
+# path = base_dir / "programming.txt"
+# path.write_text(contents)       # Adding the contents is actually deleting the existing content in the .txt file
+
+# # NOTE
+# # Be careful when calling write_text() on a path object.
+# # If the file already exists, write_text() will erase the
+# # current contents of the file and write new contents to the file.
+
+'''TRY IT YOURSELF'''
+
+# 10.4. Guest
+
+user_name = input("Enter your name: ").lower()
+
+from pathlib import Path
+
+base_dir = Path(__file__).parent
+path = base_dir / "guest.txt"
+
+user = ''
+while True:
+    print("Enter your name or type 'q' to exit!")
+    if user_name == 'q':
+        break
+    else:
+        user += user_name
+        path.write_text(user)
