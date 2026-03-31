@@ -183,6 +183,12 @@ from pathlib import Path
 # # current contents of the file and write new contents to the file.
 
 # '''
+# 💡 Important difference
+#   Method	                Behavior
+# write_text()	        ❌ Overwrites file
+# open(..., "w")	    ❌ Overwrites file
+# open(..., "a")	    ✅ Appends to file
+
 #  "w" → 🧹 Erase board, then write
 # "a" → ✍️ Keep writing on the board
 # '''
@@ -313,13 +319,13 @@ from pathlib import Path
 #         break
 
 
-'''Handling the FileNotFoundError Exception'''
+# '''Handling the FileNotFoundError Exception'''
 
 # One common issue when working with files is handling missing files
 # (different location, incorrect filename or the file might not exist at all.)
 
-from pathlib import Path
-path = Path('alice.txt')    # file not saved in cwd
+# from pathlib import Path
+# path = Path('alice.txt')    # file not saved in cwd
 
 # contents = path.read_text(encoding='utf-8')
 
@@ -334,11 +340,282 @@ path = Path('alice.txt')    # file not saved in cwd
 # This is important because it tells us what kind of exception to use in the except block that we’ll write.
 
 
-try:
-   contents = path.read_text(encoding="utf-8") 
-except FileNotFoundError:
-   print(f"Sorry, the file {path} does not exist.")
+# try:
+#    contents = path.read_text(encoding="utf-8") 
+# except FileNotFoundError:
+#    print(f"Sorry, the file {path} does not exist.")
 
 # the code in the try block produces a FileNotFoundError,
 # so we write an except block that matches that error
 
+
+'''ANALYZING TEXT'''
+
+# You can analyze text files containing entire books.
+# Project Gutenberg (https://gutenberg.org) maintains a collection of literary works that are available in the public domain,
+# and it’s a great resource if you’re interested in working with literary texts in your programming projects.
+
+
+# from pathlib import Path
+
+# base_dir = Path(__file__).parent
+# path = base_dir / "txt files"/ "alice.txt"   # modified after moving the files to new folder
+
+# try:
+#     contents = path.read_text(encoding="utf-8")
+# except FileNotFoundError:
+#     print(f"Sorry, the file {path.stem} does not exist.")
+# else:                                                    
+#     # else block works only if try block is executed sucessfully
+#     # Count the approximate number of words in the file
+#     words = contents.split()
+#     num_words = len(words)
+#     print(f"The file {path.name} has about {num_words} words.")
+
+# '''
+# 🧠 Key Path attributes (very useful)
+# path.name → alice.txt ✅ (what you want)
+# path.stem → alice (without extension)
+# path.suffix → .txt
+# path.parent → directory path
+# '''
+
+# '''WORKING WITH MULTIPLE FILES'''
+
+# # Creating a def function "count_words()" will make it easier to run analysis on multiple books.
+
+# from pathlib import Path
+# base_dir = Path(__file__).parent
+
+# def count_words(path):
+#     """Count the approximate number of words in a file."""
+#     try:
+#       contents = path.read_text(encoding = 'utf-8')
+#     except FileNotFoundError:
+#       print(f"Sorry, the file {path.stem} does not exist.")
+#     else:
+#       # Count the approximate number of words in the file.
+#       words = contents.split()
+#       num_words = len(words)
+#       print(f"The file {path.name} contains {num_words} words in the file.")
+
+
+# # path = base_dir/ "txt files" / "alice.txt"
+# # count_words(path)
+
+# # It’s a good habit to keep comments up to date when you’re modifying a program.
+
+# filenames = ['alice.txt', 'vedas.txt', 'frankenstein.txt', 'sherlock.txt']
+
+# for file in filenames:
+#    path = base_dir / "txt files" / file
+#    count_words(path)
+
+
+# # try-except block advantages:
+#    # prevent our users from seeing a traceback, 
+#    # we let the program continue analyzing the texts it’s able to find.
+#    # If we don’t catch the FileNotFoundError that vedas.txt raises, the user would see a full traceback
+#    # and the program would stop running after trying to analyze vedas.
+#    # It would never analyze frankenstein or sherlock.
+
+
+# '''FAILING SILENTLY'''
+
+# # you’ll want the program to fail silently when an exception occurs and continue on as if nothing happened.
+# # Python has a pass statement that tells it to do nothing in a block
+
+# from pathlib import Path
+# base_dir = Path(__file__).parent
+
+# def count_words(path):
+#    """Count the approximate number of words in a file."""
+#    try:
+#       contents = path.read_text(encoding = 'utf-8')
+#    except FileNotFoundError:
+#       pass
+#    else:
+#       "Count the approximate number of words in the file."
+#       words = contents.split()
+#       num_words = len(words)
+#       print(f"The file {file} contains {num_words} words.")
+#       print(f"The {path.stem} book contains {num_words} words.")
+
+# filenames = ['alice.txt', 'vedas.txt', 'frankenstein.txt', 'sherlock.txt']
+
+# for file in filenames:
+#    path = base_dir/ "txt files" / file
+#    count_words(path)
+
+
+# # Now when a FileNotFoundError is raised, the code in the except block runs, but nothing happens.
+# # No traceback is produced, and there’s no output in response to the error that was raised.
+# # Users see the word counts for each file that exists, but they don’t see any indication that a file wasn’t found.
+
+# '''
+# The pass statement also acts as a placeholder. 
+# It’s a reminder that you’re choosing to do nothing 
+# at a specific point in your program’s execution and 
+# that you might want to do something there later
+# '''
+
+# '''DECIDE WHICH ERRORS TO REPORT'''
+
+# # Python’s error-handling structures 
+# # give you fine-grained control over how much to share with users when things go wrong
+
+# # Well-written, properly tested code is not very prone to internal errors, such as syntax or logical errors.
+# # But every time your program depends on something external such as user input, the existence of a file,
+# # or the availability of a network connection, there is a possibility of an exception being raised.
+
+
+# '''TRY IT YOURSELF'''
+
+# # 10.6.  ADDITION
+
+# while True:
+#    """Adding two numbers"""
+     
+#    try:
+#       first_num = input("Enter the first number: ").lower()
+#       if first_num == 'q':
+#          break
+      
+#       second_num = input("Enter the second number: ").lower()
+#       if second_num == 'q':
+#          break
+
+#       result = int(first_num) + int(second_num)
+#       print(f"Total: {result}")
+#    except ValueError:
+#       print("Please enter a number only or enter 'q' to quit.")
+
+
+# # 10.7.  ADDITION CALCULATOR
+
+# while True:
+#    """Adding two numbers"""
+     
+#    try:
+#       first_num = input("Enter the first number: ").lower()
+#       if first_num == 'q':
+#          break
+#       first_num = int(first_num)
+
+#       second_num = input("Enter the second number: ").lower()
+#       if second_num == 'q':
+#          break
+#       second_num = int(second_num)
+
+#    except ValueError:
+#       print("Please enter a number only or enter 'q' to quit.")
+   
+#    else: 
+#       result = first_num + second_num
+#       print(f"Total: {result}")
+#       print("Enter first number to continue, or enter 'q' to quit.")
+
+
+# # 10.8.  CATS and DOGS
+
+# from pathlib import Path
+# base_dir = Path(__file__).parent
+
+# # path = base_dir/ "txt files"/ "cats.txt"
+# # contents = path.read_text('utf-8')
+# # lines = contents.splitlines()
+# # for line in lines:
+# #    print(f"{line.title()}")
+
+# try:
+
+#    path = base_dir/ "txt files"/ "cats.txt"
+#    contents = path.read_text('utf-8')
+#    lines = contents.splitlines()
+#    for line in lines:
+#       print(f"{line.title()}")
+
+#    path1 = base_dir/ "dogs.txt"
+#    # path1 = base_dir/ "txt files" /"dogs.txt"
+#    contents1 = path1.read_text('utf-8')
+#    lines1 = contents1.splitlines()
+#    for line in lines1:
+#       print(line.title())
+
+# except FileNotFoundError:
+#    print(f"Sorry! couldn't locate the {path1.stem} text file.")
+
+# # 10.9.  Silent Cats and Dogs
+
+# from pathlib import Path
+# base_dir = Path(__file__).parent
+
+# try:
+
+#    path = base_dir/ "txt files"/ "cats.txt"
+#    contents = path.read_text('utf-8')
+#    lines = contents.splitlines()
+#    for line in lines:
+#       print(f"{line.title()}")
+
+#    path1 = base_dir/ "dogs.txt"
+#    # path1 = base_dir/ "txt files" /"dogs.txt"
+#    contents1 = path1.read_text('utf-8')
+#    lines1 = contents1.splitlines()
+#    for line in lines1:
+#       print(line.title())
+
+# except FileNotFoundError:
+#    pass
+
+
+# 10.10. Common Words
+
+from pathlib import Path
+
+base_dir = Path(__file__).parent
+path = base_dir/ "txt files"/ "frankenstein.txt"
+
+words = path.read_text('utf-8')
+num_words = len(words)
+print(num_words)  # 438840
+
+# Counting the words with 'the'
+print(words.count("the"))  # 5475   (includes 'the', 'then', 'there', 'them' etc.)
+print(words.count('the ')) # 3683   (includes 'the' only)
+
+# First 25 words containing 'the'
+
+words = path.read_text('utf-8').lower().split()
+the_words = [word for word in words if 'the' in word]
+print(the_words[:25])
+
+# Words that start with "the"
+
+start_with_the = [word for word in words if word.startswith("the")]
+print(start_with_the[:25])
+
+# Words that end with 'the'
+
+end_with_the = [word for word in words if word.endswith("the")]
+print(end_with_the[-25:])
+
+'''Better approach using regex'''
+
+from pathlib import Path
+import re
+
+text = path.read_text('utf-8').lower()
+words = re.findall(r'\b\w+\b', text)
+
+#1. Contains 'the'
+print("\nContains 'the': ")
+print([word for word in words if 'the' in word][:25])
+
+#2. Starts with 'the'
+print("\nStarts with 'the': ")
+print([w for w in words if w.startswith("the")][:25])
+
+#3. Ends with 'the'
+print("\nEnds with 'the': ")
+print([w for w in words if w.endswith('the')][-25:])
