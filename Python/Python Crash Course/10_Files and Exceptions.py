@@ -569,53 +569,245 @@ from pathlib import Path
 #    pass
 
 
-# 10.10. Common Words
+# # 10.10. Common Words
 
+# from pathlib import Path
+
+# base_dir = Path(__file__).parent
+# path = base_dir/ "txt files"/ "frankenstein.txt"
+
+# words = path.read_text('utf-8')
+# num_words = len(words)
+# print(num_words)  # 438840
+
+# # Counting the words with 'the'
+# print(words.count("the"))  # 5475   (includes 'the', 'then', 'there', 'them' etc.)
+# print(words.count('the ')) # 3683   (includes 'the' only)
+
+# # First 25 words containing 'the'
+
+# words = path.read_text('utf-8').lower().split()
+# the_words = [word for word in words if 'the' in word]
+# print(the_words[:25])
+
+# # Words that start with "the"
+
+# start_with_the = [word for word in words if word.startswith("the")]
+# print(start_with_the[:25])
+
+# # Words that end with 'the'
+
+# end_with_the = [word for word in words if word.endswith("the")]
+# print(end_with_the[-25:])
+
+# '''Better approach using regex'''
+
+# from pathlib import Path
+# import re
+
+# text = path.read_text('utf-8').lower()
+# words = re.findall(r'\b\w+\b', text)
+
+# #1. Contains 'the'
+# print("\nContains 'the': ")
+# print([word for word in words if 'the' in word][:25])
+
+# #2. Starts with 'the'
+# print("\nStarts with 'the': ")
+# print([w for w in words if w.startswith("the")][:25])
+
+# #3. Ends with 'the'
+# print("\nEnds with 'the': ")
+# print([w for w in words if w.endswith('the')][-25:])
+
+
+# '''STORING DATA'''
+
+# # You might allow users to store preferences in a game or provide data for a visualization.
+# # you’ll store the information users provide in data structures such as lists and dictionaries.
+# # you’ll almost always want to save the information they entered using the JSON module.
+
+# # The json module allows you to convert simple Python data structures into JSON-formatted strings,
+# # and then load the data from that file the next time the program runs. 
+# # You can also use json to share data between different Python programs.
+# # You can share data with people who work in many other programming languages.
+# # It's useful and portable format and it's easy to learn.
+
+# # JSON (Java Script Object Notation) originally developed for JavaScript, 
+# # is a common format used by many languages, including python.
+
+# '''Using json.dumps() and json.loads()'''
+
+# # write and read data back into memory.
+# # json.dumps() store data (set of numbers).
+# # json.dumps()function takes one argument: a piece of data that should be converted to the JSON format.
+# # The function returns a string which can then write to a data file. 
+
+# # json.loads() retrieves data
+
+# from pathlib import Path
+# import json
+
+# numbers = [2, 3, 5, 7, 11, 13]
+
+# base_dir = Path(__file__).parent
+# path = base_dir/ "txt files" / 'numbers.json'
+
+# # path = path_dir('numbers.json')
+# contents = json.dumps(numbers)
+# path.write_text(contents)
+
+
+# # json.dumps() ❷ function to generate a string containing the JSON representation of the data we’re working with.
+# # json.loads() to read the list back into memory.
+
+# content = path.read_text()
+# numbers1 = json.loads(content)
+# print(numbers1)
+
+# # This function takes in a JSON-formatted string and returns a Python object (in this case, a list), which we assign to numbers1.
+
+# '''Saving and Reading User-Generated Data'''
+
+# # Saving data with json is useful when you’re working with user-generated data,
+# # because if you don’t store your user’s information somehow,
+# # you’ll lose it when the program stops running.
+
+# # Storing the user's name:
+
+# from pathlib import Path
+# import json
+
+# username = input("What is your name?")
+# base_dir = Path(__file__).parent
+# path = base_dir/ 'txt files' / 'numbers.json'
+# contents = json.dumps(username)
+
+# path.write_text(contents)
+# print(f"We'll remember you when you can come back, {username}!")
+
+# '''
+# 🧠 Key difference (VERY important)
+# Function	               Purpose
+# json.dump()	      Write JSON directly to a file
+# json.dumps()	   Convert to JSON string
+# '''
+
+# # We'll use a hadny method from the pathlib module:
+
+# '''💡 Alternative (even cleaner approach)'''
+# # You can skip write_text() and use dump() properly:
+
+# # with open(path, 'w') as f:
+# #     json.dump(username, f)
+
+'''remember_me.py'''
 from pathlib import Path
+import json
 
 base_dir = Path(__file__).parent
-path = base_dir/ "txt files"/ "frankenstein.txt"
+path = base_dir/ 'txt files' / 'username.json'
 
-words = path.read_text('utf-8')
-num_words = len(words)
-print(num_words)  # 438840
+if path.exists():
+    contents = path.read_text()
+    username = json.loads(contents)
+    print(f"Welcome back, {username}!")
+else:
+    path.parent.mkdir(parents=True, exist_ok=True) # ✅ ensures folder exists
+    # Above line of code makes it Robust and Production-ready
+    username = input("What is you name? ")
+    contents = json.dumps(username)
+    path.write_text(contents)    # Creates file if it doesn't exist, doesn't create missing folders
+    
+    print(f"We'll remember you when you come back, {username}!")
 
-# Counting the words with 'the'
-print(words.count("the"))  # 5475   (includes 'the', 'then', 'there', 'them' etc.)
-print(words.count('the ')) # 3683   (includes 'the' only)
 
-# First 25 words containing 'the'
+'''REFACTORING'''
 
-words = path.read_text('utf-8').lower().split()
-the_words = [word for word in words if 'the' in word]
-print(the_words[:25])
+# Improve the code by breaking it up into a series of functions that have specific jobs.
+# Refactoring makes your code cleaner, easier to understand and easier to extend.
 
-# Words that start with "the"
+'Break and move all of our existing code into a function called greet_user()'
 
-start_with_the = [word for word in words if word.startswith("the")]
-print(start_with_the[:25])
+def greet_user():
+    """Greet the user by name."""
+    path = base_dir/ 'txt files'/ 'username.json'
+    if path.exists():
+        contents = path.read_text()
+        username = json.loads(contents)
+        print(f"Welcome back, {username}!")
+    else:
+         username = input("What is your name? ")
+         contents = json.dumps(username)
+         path.write_text(contents)
+         print(f"We'll remember you when you come back, {username}!")
 
-# Words that end with 'the'
+greet_user()
 
-end_with_the = [word for word in words if word.endswith("the")]
-print(end_with_the[-25:])
+# This file is a little cleaner,
+# but the function greet_user() is doing more than just greeting the
+# user—it’s also retrieving a stored username if one exists and
+# prompting for a new username if one doesn’t.
 
-'''Better approach using regex'''
+'''refactor greet_user()'''
 
 from pathlib import Path
-import re
+import json
 
-text = path.read_text('utf-8').lower()
-words = re.findall(r'\b\w+\b', text)
+def get_stored_username(path):
+    """Get stored username if available."""
+    if path.exists():
+        contents = path.read_text()
+        username = json.loads(contents)
+        return username
+    else:
+        return None
+    
+def greet_user():
+    """Greet the user by name."""
+    path = base_dir/ 'txt files'/ 'username.json'
+    username = get_stored_username(path)
+    if username:
+        print(f"Welcome back, {username}!")
+    else:
+        username = input("What is your name? ")
+        contents = json.dumps(username)
+        path.write_text(contents)
+        print(f"We'll remember you when you come back, {username}!")
 
-#1. Contains 'the'
-print("\nContains 'the': ")
-print([word for word in words if 'the' in word][:25])
+greet_user()
 
-#2. Starts with 'the'
-print("\nStarts with 'the': ")
-print([w for w in words if w.startswith("the")][:25])
+# Good practice: a function should either return the value you're expecting, or it should return None.
 
-#3. Ends with 'the'
-print("\nEnds with 'the': ")
-print([w for w in words if w.endswith('the')][-25:])
+# If username doesn't exist, we should move the code that prompts for a new usernam
+# to function dedicated to that purpose.
+
+
+def get_stored_username(path):
+    """Get stored username if available."""
+    if path.exists():
+        contents = path.read_text()
+        username = json.loads(contents)
+        return username
+    else:
+        return None
+
+def get_new_username(path):
+    """Prompt for a new username."""
+    username = input('What is your name? ')
+    contents = json.dumps(username)
+    path.write_text(contents)
+    return username
+
+def greet_user():
+    """Greet the user by name."""
+    path = base_dir/ 'txt files'/ 'username.json'
+    username = get_stored_username(path)
+    if username:
+        print(f"Welcome back, {username}!")
+    else:
+        username = get_new_username(path)
+        print(f"We'll remember you when you come back, {username}!")
+
+greet_user()
+
