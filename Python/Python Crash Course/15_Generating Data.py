@@ -124,171 +124,278 @@
 # plt.show()
 
 
-'''PLOTTING AND STYLING INDIVIDUAL POINTS WITH SCATTER()'''
+# '''PLOTTING AND STYLING INDIVIDUAL POINTS WITH SCATTER()'''
 
-# Sometimes, it’s useful to plot and style individual points based on certain characteristics.
-# For example, you might plot small values in one color and larger values in a different color.
-# You could also plot a large dataset with one set of styling options.
+# # Sometimes, it’s useful to plot and style individual points based on certain characteristics.
+# # For example, you might plot small values in one color and larger values in a different color.
+# # You could also plot a large dataset with one set of styling options.
 
-# To plot a single point, pass the single x- and y-values of the point to scatter()
+# # To plot a single point, pass the single x- and y-values of the point to scatter()
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
-plt.style.use('dark_background')
-fig, ax = plt.subplots()
-# ax.scatter(2, 4)
+# plt.style.use('dark_background')
+# fig, ax = plt.subplots()
+# # ax.scatter(2, 4)
+# # plt.show()
+
+# 'STYLE THE OUTPUT'
+
+# ax.scatter(2, 4,s=200)
+
+# # Set chart title and label axes.
+# ax.set_title("Square Numbers", fontsize = 24)
+# ax.set_xlabel("Value", fontsize = 12)
+# ax.set_ylabel("Square of Value", fontsize = 12)
+
+# # Set size of tick labels.
+# ax.tick_params(labelsize = 12)
 # plt.show()
 
-'STYLE THE OUTPUT'
+# '''Plotting a series of points with scatter()'''
 
-ax.scatter(2, 4,s=200)
+# # To plot a series of points, we can pass scatter() separate lists of x- and y-values
 
-# Set chart title and label axes.
-ax.set_title("Square Numbers", fontsize = 24)
-ax.set_xlabel("Value", fontsize = 12)
-ax.set_ylabel("Square of Value", fontsize = 12)
+# import matplotlib.pyplot as plt
 
-# Set size of tick labels.
-ax.tick_params(labelsize = 12)
-plt.show()
+# x_values = [1, 2, 3, 4, 5]
+# y_values = [1, 4, 9, 16, 25]
 
-'''Plotting a series of points with scatter()'''
+# plt.style.use('dark_background')
+# fig, ax = plt.subplots()
+# ax.scatter(x_values, y_values, s=100)   # s=100 --> size of dot
 
-# To plot a series of points, we can pass scatter() separate lists of x- and y-values
+# # Set chart title and label axes.
+# ax.set_title("Square Numbers", fontsize = 24)
+# ax.set_xlabel("Value", fontsize = 12)
+# ax.set_ylabel("Square of Value", fontsize = 12)
+
+# # Set size of tick labels.
+# ax.tick_params(labelsize = 12)
+# plt.show()
+
+# # Matplotlib reads one value from each list as it plots each point. 
+# # The points to be plotted are (1, 1), (2, 4), (3, 9), (4, 16), and (5, 25)
+
+# '''Calculating Data Automatically'''
+
+# # Writing lists by hand can be inefficient, especially when we have many points.
+# # Rather than writing out each value, let’s use a loop to do the calculations for us.
+
+# import matplotlib.pyplot as plt
+
+# x_values = range(1, 1001)
+# y_values = [x**2 for x in x_values]
+
+# plt.style.use('ggplot')
+# fig, ax = plt.subplots()
+# ax.scatter(x_values, y_values, s=10)   # s=100 --> size of dot
+
+# # Set chart title and label axes.
+# ax.set_title("Square Numbers", fontsize = 24)
+# ax.set_xlabel("Value", fontsize = 12)
+# ax.set_ylabel("Square of Value", fontsize = 12)
+
+# # Set size of tick labels.
+# ax.tick_params(labelsize = 12)
+
+# # Set the range for each axis
+# ax.axis([0, 1100, 0, 1_100_000])
+# plt.show()      # Python can plot 1,000 points as easily as it plots 5 points.
+
+
+# '''Customizing Tick Labels'''
+
+# # When the numbers on an axis get large enough, 
+# # Matplotlib defaults to scientific notation for tick labels.
+# # This is usually a good thing, because larger numbers in plain notation take
+# # up a lot of unnecessary space on a visualization.
+# # Almost every element of a chart is customizable,
+# # so you can tell Matplotlib to keep using plain notation if you prefer.
+
+# import matplotlib.pyplot as plt
+
+# x_values = range(1, 1001)
+# y_values = [x**2 for x in x_values]
+
+# plt.style.use('ggplot')
+# fig, ax = plt.subplots()
+# ax.scatter(x_values, y_values, s=10)   # s=100 --> size of dot
+
+# # Set chart title and label axes.
+# ax.set_title("Square Numbers", fontsize = 24)
+# ax.set_xlabel("Value", fontsize = 12)
+# ax.set_ylabel("Square of Value", fontsize = 12)
+
+# # Set size of tick labels.
+# ax.tick_params(labelsize = 12)
+
+# # Set the range for each axis
+# ax.axis([0, 1100, 0, 1_100_000])
+# ax.ticklabel_format(style='plain')    
+# plt.show()
+
+# # The ticklabel_format() method allows you to override the default tick label style for any plot.
+
+# '''Defining Custom Colors'''
+
+# # To change the color of the points, pass the argument color to scatter()
+
+# ax.scatter(x_values, y_values, color = 'red', s=10) 
+
+# ax.scatter(x_values, y_values, color = (0, 0.8, 0) , s=10)
+
+# # Values closer to 0 produce darker colors, and values closer to 1 produce lighter colors
+
+# ''' Using a Colormap '''
+
+# # A colormap is a sequence of colors in a gradient that moves from a starting to an ending color.
+# # Using a colormap ensures that all points in the visualization vary smoothly and accurately
+# # along a well-designed color scale.
+
+# # The pyplot module includes a set of built-in colormaps.
+# # how to assign a color to each point, based on its y-value?
+
+# import matplotlib.pyplot as plt
+
+# x_values = range(1, 1001)
+# y_values = [x**2 for x in x_values]
+
+# plt.style.use('ggplot')
+# fig, ax = plt.subplots()
+# ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Greens, s=10)   # A plot using the Greens colormap.
+
+# # Set chart title and label axes.
+# ax.set_title("Square Numbers", fontsize = 24)
+# ax.set_xlabel("Value", fontsize = 12)
+# ax.set_ylabel("Square of Value", fontsize = 12)
+
+# # Set size of tick labels.
+# ax.tick_params(labelsize = 12)
+
+# # Set the range for each axis
+# ax.axis([0, 1100, 0, 1_100_000])
+# ax.ticklabel_format(style='plain')    
+# plt.show()
+
+
+# '''Saving Your Plots Automatically'''
+
+# # If you want to save the plot to a file instead of showing it in the Matplotlib viewer, 
+# # you can use plt.savefig() instead of plt.show().
+
+# plt.savefig('square_plot.png', bbox_inches = 'tight')
+
+# # The first argument is a filename for the plot image,
+# # which will be saved in the same directory as scatter_squares.py.
+# # The second argument trims extra whitespace from the plot.
+# # If you want the extra whitespace around the plot,
+# # you can omit this argument. You can also call savefig() with a Path object,
+# # and write the output file anywhere you want on your system.
+
+
+# '''TRY IT YOURSELF'''
+
+# # 15.1. CUBES
+
+# import matplotlib.pyplot as plt
+
+# x_values = [1, 2, 3, 4, 5]
+# y_values = [x**3 for x in x_values]
+
+# plt.style.use('dark_background')
+# fig, ax = plt.subplots()
+# ax.scatter(x_values, y_values, s=100)
+
+# # Set chart title and label axes
+# ax.set_title("Cube Numbers", fontsize = 24)
+# ax.set_xlabel("Value", fontsize = 14)
+# ax.set_ylabel("Cube of values", fontsize = 14)
+
+# # Set size of tick labels
+# ax.tick_params(labelsize = 12)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+
+# x_values = [1, 2, 3, 4, 5]
+# y_values = [x**3 for x in x_values]
+
+# plt.style.use('dark_background')
+# fig, ax = plt.subplots()
+# ax.scatter(x_values, y_values, s=100)
+
+# # Set chart title and label axes
+# ax.set_title("Cube Numbers", fontsize = 24)
+# ax.set_xlabel("Value", fontsize = 14)
+# ax.set_ylabel("Cube of values", fontsize = 14)
+
+# # Set size of tick labels
+# ax.tick_params(labelsize = 12)
+# plt.show()
+
+
+# # 15.2  Colored cubes - Applying colormap and plotting first 5000 cubic numbers
+
+# import matplotlib.pyplot as plt
+
+# x_values = range(1,5001)
+# y_values = [x**3 for x in x_values]
+
+# plt.style.use('ggplot')
+# fig, ax = plt.subplots()
+# ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Blues, s=5)
+
+# # Set chart title and label axes
+# ax.set_title("Cubes of Numbers", fontsize = 24)
+# ax.set_xlabel("Values", fontsize = 14)
+# ax.set_ylabel("Cubes of values", fontsize = 14)
+
+# # Set size of tick labels
+# ax.tick_params(labelsize=10)
+
+# # Set the range for each axis
+# ax.axis([0, 5100, 0, 126_000_000_000])
+# ax.ticklabel_format(style='plain')
+# plt.show()
+
+
+'''RANDOM WALKS'''
+
+# A random walk is a path that’s determined by a series of simple decisions, 
+# each of which is left entirely to chance.
+
+# Random walks have practical applications in nature, physics, biology, chemistry, and economics.
+# For example, a pollen grain floating on a drop of water.
+
+'''Creating the RandomWalk Class'''
+
+# This class needs 3 attributes.
+# one variable - to track the number of points in the walk.
+# two lists - to store the x and y corrdinates of each point in the walk.
+
+# We’ll only need two methods for the RandomWalk class: 
+# the __init__() method and fill_walk(), which will calculate the points in the walk
+
+'''Refer the 15.2_Random_walk.py file for Randomwalk class, its init method and fillwalk method'''
+
+'''PLOTTING THE RANDOM WALK'''
 
 import matplotlib.pyplot as plt
+from random_walk import Randomwalk
 
-x_values = [1, 2, 3, 4, 5]
-y_values = [1, 4, 9, 16, 25]
+# Make a random walk
+rw = Randomwalk()       # Random walk is created
+rw.fill_walk()          # called fill_walk through rw
 
-plt.style.use('dark_background')
+# Plot the points in the walk.
+plt.style.use('classic')
 fig, ax = plt.subplots()
-ax.scatter(x_values, y_values, s=100)   # s=100 --> size of dot
-
-# Set chart title and label axes.
-ax.set_title("Square Numbers", fontsize = 24)
-ax.set_xlabel("Value", fontsize = 12)
-ax.set_ylabel("Square of Value", fontsize = 12)
-
-# Set size of tick labels.
-ax.tick_params(labelsize = 12)
+ax.scatter(rw.x_values, rw.y_values, s=15)
+ax.set_aspect('equal')
 plt.show()
 
-# Matplotlib reads one value from each list as it plots each point. 
-# The points to be plotted are (1, 1), (2, 4), (3, 9), (4, 16), and (5, 25)
+# rw.x_values, rw.y_values feed values to x, y axes to scatter to visualise the walk.
+# Matplotlib scales each axis independently.
+# aspect'equal' means both axes should have equal spacing btn tick marks.
 
-'''Calculating Data Automatically'''
-
-# Writing lists by hand can be inefficient, especially when we have many points.
-# Rather than writing out each value, let’s use a loop to do the calculations for us.
-
-import matplotlib.pyplot as plt
-
-x_values = range(1, 1001)
-y_values = [x**2 for x in x_values]
-
-plt.style.use('ggplot')
-fig, ax = plt.subplots()
-ax.scatter(x_values, y_values, s=10)   # s=100 --> size of dot
-
-# Set chart title and label axes.
-ax.set_title("Square Numbers", fontsize = 24)
-ax.set_xlabel("Value", fontsize = 12)
-ax.set_ylabel("Square of Value", fontsize = 12)
-
-# Set size of tick labels.
-ax.tick_params(labelsize = 12)
-
-# Set the range for each axis
-ax.axis([0, 1100, 0, 1_100_000])
-plt.show()      # Python can plot 1,000 points as easily as it plots 5 points.
-
-
-'''Customizing Tick Labels'''
-
-# When the numbers on an axis get large enough, 
-# Matplotlib defaults to scientific notation for tick labels.
-# This is usually a good thing, because larger numbers in plain notation take
-# up a lot of unnecessary space on a visualization.
-# Almost every element of a chart is customizable,
-# so you can tell Matplotlib to keep using plain notation if you prefer.
-
-import matplotlib.pyplot as plt
-
-x_values = range(1, 1001)
-y_values = [x**2 for x in x_values]
-
-plt.style.use('ggplot')
-fig, ax = plt.subplots()
-ax.scatter(x_values, y_values, s=10)   # s=100 --> size of dot
-
-# Set chart title and label axes.
-ax.set_title("Square Numbers", fontsize = 24)
-ax.set_xlabel("Value", fontsize = 12)
-ax.set_ylabel("Square of Value", fontsize = 12)
-
-# Set size of tick labels.
-ax.tick_params(labelsize = 12)
-
-# Set the range for each axis
-ax.axis([0, 1100, 0, 1_100_000])
-ax.ticklabel_format(style='plain')    
-plt.show()
-
-# The ticklabel_format() method allows you to override the default tick label style for any plot.
-
-'''Defining Custom Colors'''
-
-# To change the color of the points, pass the argument color to scatter()
-
-ax.scatter(x_values, y_values, color = 'red', s=10) 
-
-ax.scatter(x_values, y_values, color = (0, 0.8, 0) , s=10)
-
-# Values closer to 0 produce darker colors, and values closer to 1 produce lighter colors
-
-''' Using a Colormap '''
-
-# A colormap is a sequence of colors in a gradient that moves from a starting to an ending color.
-# Using a colormap ensures that all points in the visualization vary smoothly and accurately
-# along a well-designed color scale.
-
-# The pyplot module includes a set of built-in colormaps.
-# how to assign a color to each point, based on its y-value?
-
-import matplotlib.pyplot as plt
-
-x_values = range(1, 1001)
-y_values = [x**2 for x in x_values]
-
-plt.style.use('ggplot')
-fig, ax = plt.subplots()
-ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Greens, s=10)   # A plot using the Greens colormap.
-
-# Set chart title and label axes.
-ax.set_title("Square Numbers", fontsize = 24)
-ax.set_xlabel("Value", fontsize = 12)
-ax.set_ylabel("Square of Value", fontsize = 12)
-
-# Set size of tick labels.
-ax.tick_params(labelsize = 12)
-
-# Set the range for each axis
-ax.axis([0, 1100, 0, 1_100_000])
-ax.ticklabel_format(style='plain')    
-plt.show()
-
-
-'''Saving Your Plots Automatically'''
-
-# If you want to save the plot to a file instead of showing it in the Matplotlib viewer, 
-# you can use plt.savefig() instead of plt.show().
-
-plt.savefig('square_plot.png', bbox_inches = 'tight')
-
-# The first argument is a filename for the plot image,
-# which will be saved in the same directory as scatter_squares.py.
-# The second argument trims extra whitespace from the plot.
-# If you want the extra whitespace around the plot,
-# you can omit this argument. You can also call savefig() with a Path object,
-# and write the output file anywhere you want on your system.
