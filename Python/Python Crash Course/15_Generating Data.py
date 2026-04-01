@@ -360,42 +360,259 @@
 # plt.show()
 
 
-'''RANDOM WALKS'''
+# '''RANDOM WALKS'''
 
-# A random walk is a path that’s determined by a series of simple decisions, 
-# each of which is left entirely to chance.
+# # A random walk is a path that’s determined by a series of simple decisions, 
+# # each of which is left entirely to chance.
 
-# Random walks have practical applications in nature, physics, biology, chemistry, and economics.
-# For example, a pollen grain floating on a drop of water.
+# # Random walks have practical applications in nature, physics, biology, chemistry, and economics.
+# # For example, a pollen grain floating on a drop of water.
 
-'''Creating the RandomWalk Class'''
+# '''Creating the RandomWalk Class'''
 
-# This class needs 3 attributes.
-# one variable - to track the number of points in the walk.
-# two lists - to store the x and y corrdinates of each point in the walk.
+# # This class needs 3 attributes.
+# # one variable - to track the number of points in the walk.
+# # two lists - to store the x and y corrdinates of each point in the walk.
 
-# We’ll only need two methods for the RandomWalk class: 
-# the __init__() method and fill_walk(), which will calculate the points in the walk
+# # We’ll only need two methods for the RandomWalk class: 
+# # the __init__() method and fill_walk(), which will calculate the points in the walk
 
-'''Refer the 15.2_Random_walk.py file for Randomwalk class, its init method and fillwalk method'''
+# '''Refer the 15.2_Random_walk.py file for Randomwalk class, its init method and fillwalk method'''
 
-'''PLOTTING THE RANDOM WALK'''
+# '''PLOTTING THE RANDOM WALK'''
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Make a random walk
+# rw = Randomwalk()       # Random walk is created
+# rw.fill_walk()          # called fill_walk through rw
+
+# # Plot the points in the walk.
+# plt.style.use('classic')
+# fig, ax = plt.subplots()
+# ax.scatter(rw.x_values, rw.y_values, s=15)
+# ax.set_aspect('equal')
+# plt.show()
+
+# # rw.x_values, rw.y_values feed values to x, y axes to scatter to visualise the walk.
+# # Matplotlib scales each axis independently.
+# # aspect'equal' means both axes should have equal spacing btn tick marks.
+
+# '''GENERATING MULTIPLE RANDOM WALKS'''
+
+# # One way to use the preceding code to make multiple walks without having to
+# # run the program several times is to wrap it in a while loop
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk()       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
+
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots()
+#     ax.scatter(rw.x_values, rw.y_values, s=15)
+#     ax.set_aspect('equal')
+#     plt.show()
+
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
+
+# # If you generate a few walks, you should see some that stay near the starting point, 
+# # some that wander off mostly in one direction, 
+# # some that have thin sections connecting larger groups of points, 
+# # and many other kinds of walks.
+
+
+# '''STYLING THE WALK'''
+
+# 'Customise our plots'
+
+# # EMPHASIZE the important characteristics
+# # Where the walk began, where it ended and the path taken.
+
+# # DEEMPHASIZE distracting elements
+# # such as tick marks and labels
+
+# # The result should be a simple visual representation
+# # that clearly communicates the path taken in each random walk.
+
+# '''COLORING THE POINTS'''
+
+# # Use a colormap
+# # Remove the black outline from each dot, so that the color of the dots will be clearer.
+
+# # To color the points according to their position in the walk,
+# # we pass the c argument a list containing the position of each point.
+
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk()       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
+
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots()
+#     point_numbers = range(rw.num_points)            # new line
+#     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
+#                cmap=plt.cm.Greens, edgecolors='none', s=15) # new line
+#     ax.set_aspect('equal')
+#     plt.show()
+
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
+
+
+# '''PLOTTING THE STARTING AND ENDING POINTS'''
+
+# # We’ll make the end points larger and color them differently to make them stand out.
+
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk()       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
+
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots()
+#     point_numbers = range(rw.num_points)            
+#     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
+#                cmap=plt.cm.Greens, edgecolors='none', s=15)
+#     ax.set_aspect('equal')
+    
+#     # Emphasize the first and last points.            # New block of code
+#     ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
+#     ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s= 100)
+
+#     plt.show()
+
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
+
+# '''CLEANING UP THE AXES'''
+
+# # Let’s remove the axes in this plot so they don’t distract from the path of each walk.
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk()       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
+
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots()
+#     point_numbers = range(rw.num_points)            # new line
+#     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
+#                cmap=plt.cm.Greens, edgecolors='none', s=15) # new line
+#     ax.set_aspect('equal')
+    
+#     # Emphasize the first and last points.
+#     ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
+#     ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s= 100)
+
+#     # Remove the axes.  (series of plots with no axes)      # New block of code
+#     ax.get_xaxis().set_visible(False)   
+#     ax.get_yaxis().set_visible(False)
+
+#     plt.show()
+
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
+
+# '''ADDING PLOT POINTS'''
+
+# # Let’s increase the number of points, to give us more data to work with.
+# # To do so, we increase the value of num_points, when we make a RandomWalk instance
+# # and adjust the size of each dot when drawing the plot.
+
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk(500_000)       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
+
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots()
+#     point_numbers = range(rw.num_points)
+#     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
+#                cmap=plt.cm.Reds, edgecolors='none', s=2) 
+#     ax.set_aspect('equal')
+    
+#     # Emphasize the first and last points.
+#     ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
+#     ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s= 100)
+
+#     # Remove the axes.  (series of plots with no axes)      
+#     ax.get_xaxis().set_visible(False)   
+#     ax.get_yaxis().set_visible(False)
+
+#     plt.show()
+
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
+
+
+'''ALTERING THE SIZE TO FILL THE SCREEN'''
+
+# A visualization is much more effective at communicating patterns in data if it fits nicely on the screen.
+
 
 import matplotlib.pyplot as plt
 from random_walk import Randomwalk
 
-# Make a random walk
-rw = Randomwalk()       # Random walk is created
-rw.fill_walk()          # called fill_walk through rw
+# Keep making new walks, as long as the program is active.
+while True:
+    # Make a random walk
+    rw = Randomwalk(50_000)       # Random walk is created
+    rw.fill_walk()          # called fill_walk through rw
 
-# Plot the points in the walk.
-plt.style.use('classic')
-fig, ax = plt.subplots()
-ax.scatter(rw.x_values, rw.y_values, s=15)
-ax.set_aspect('equal')
-plt.show()
+    # Plot the points in the walk.
+    plt.style.use('classic')
+    fig, ax = plt.subplots(figsize = (15,9), dpi=128)       # New line
+    point_numbers = range(rw.num_points)            
+    ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
+               cmap=plt.cm.Reds, edgecolors='none', s=2) 
+    ax.set_aspect('equal')
+    
+    # Emphasize the first and last points.
+    ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
+    ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s= 100)
 
-# rw.x_values, rw.y_values feed values to x, y axes to scatter to visualise the walk.
-# Matplotlib scales each axis independently.
-# aspect'equal' means both axes should have equal spacing btn tick marks.
+    # Remove the axes.  (series of plots with no axes)     
+    ax.get_xaxis().set_visible(False)   
+    ax.get_yaxis().set_visible(False)
 
+    plt.show()
+
+    keep_running = input("Make another walk? (y/n): ")
+    if keep_running == 'n':
+        break
