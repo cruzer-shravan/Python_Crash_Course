@@ -26,23 +26,26 @@ class Randomwalk:
 
             # Decide which direction to go and how far to go.
 
-            x_direction = choice([1, -1])           # move rt or left
-            x_distance = choice([0, 1, 2, 3, 4])    # distance to move in that direction
-            x_step = x_direction * x_distance       # + (move rt), - (left), 0 (horizontal)
-
-            y_direction = choice([1, -1])           # move up or down
-            y_distance = choice([0, 1, 2, 3, 4])    # distance to move in that direction
-            y_step = y_direction * y_distance       # + (move up), - (down), 0 (vertical)
+            x_step = self.get_step()
+            y_step = self.get_step()
 
             # Reject moves that go nowhere
-            if x_step ==0 and y_step == 0:
+            if x_step == 0 and y_step == 0:
                 continue
-            
+
             # Calculate the new position.
             x = self.x_values[-1] + x_step
             y = self.y_values[-1] + y_step
 
             self.x_values.append(x)
             self.y_values.append(y)
+            
+    def get_step(self):
+        """Calculate a single step in the walk."""
+        direction = choice([-1])            # move rt or left
+        distance = choice([0, 1, 2, 3, 4])  # distance to move in that direction
+        step = direction * distance         # + (move rt), - (left), 0 (horizontal)
+
+        return step
 
             

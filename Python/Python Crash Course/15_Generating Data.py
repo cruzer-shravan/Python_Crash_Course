@@ -581,9 +581,80 @@
 #         break
 
 
-'''ALTERING THE SIZE TO FILL THE SCREEN'''
+# '''ALTERING THE SIZE TO FILL THE SCREEN'''
 
-# A visualization is much more effective at communicating patterns in data if it fits nicely on the screen.
+# # A visualization is much more effective at communicating patterns in data if it fits nicely on the screen.
+
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk(50_000)       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
+
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots(figsize = (15,9), dpi=128)       # New line
+#     point_numbers = range(rw.num_points)            
+#     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
+#                cmap=plt.cm.Reds, edgecolors='none', s=2) 
+#     ax.set_aspect('equal')
+    
+#     # Emphasize the first and last points.
+#     ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
+#     ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s= 100)
+
+#     # Remove the axes.  (series of plots with no axes)     
+#     ax.get_xaxis().set_visible(False)   
+#     ax.get_yaxis().set_visible(False)
+
+#     plt.show()
+
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
+
+
+# '''TRY IT YOURSELF'''
+
+# # 15.3. MOLECULAR MOTION
+
+
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
+
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk(5_000)       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
+
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots(figsize = (15,9), dpi=128)       # New line
+#     point_numbers = range(rw.num_points)            
+#     ax.plot(rw.x_values, rw.y_values, c='red', linewidth = 2) 
+#     ax.set_aspect('equal')
+    
+#     # # Emphasize the first and last points.
+#     ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
+#     ax.scatter(rw.x_values[-1], rw.y_values[-1], c='green', edgecolors='none', s= 100)
+
+#     # Remove the axes.  (series of plots with no axes)     
+#     ax.get_xaxis().set_visible(False)   
+#     ax.get_yaxis().set_visible(False)
+
+#     plt.show()
+
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
+
+
+# 15.4. Modified Random Walks
 
 
 import matplotlib.pyplot as plt
@@ -616,3 +687,22 @@ while True:
     keep_running = input("Make another walk? (y/n): ")
     if keep_running == 'n':
         break
+
+# Output 1:  x-direction = 1, y_direction = 1, -1
+    # There was a thin horizontal line that moved along the x axis.
+
+# Output 2: x_direction = 1, y_direction = 1
+    # A diagonal line was formed between the axes, in Quadrant 1
+    # showing an increasing trend with every increase in x and y coordinates.
+
+# Output 3: x direction = -1 and y direction = 1
+    # A diagonal line formed between the axes in Quadrant 2
+    # showing an increasing trend with every decrease in x values and increase in y values.
+
+# Output 4: x = -1, y = -1
+    # Decreasing trend diagonally towards the origin
+
+
+# 15.5. Refactoring
+
+# Replaced x and y coordinate steps to just one step function in random_walk Class.
