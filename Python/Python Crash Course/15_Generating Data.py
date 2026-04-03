@@ -654,55 +654,130 @@
 #         break
 
 
-# 15.4. Modified Random Walks
+# # 15.4. Modified Random Walks
 
 
-import matplotlib.pyplot as plt
-from random_walk import Randomwalk
+# import matplotlib.pyplot as plt
+# from random_walk import Randomwalk
 
-# Keep making new walks, as long as the program is active.
-while True:
-    # Make a random walk
-    rw = Randomwalk(50_000)       # Random walk is created
-    rw.fill_walk()          # called fill_walk through rw
+# # Keep making new walks, as long as the program is active.
+# while True:
+#     # Make a random walk
+#     rw = Randomwalk(50_000)       # Random walk is created
+#     rw.fill_walk()          # called fill_walk through rw
 
-    # Plot the points in the walk.
-    plt.style.use('classic')
-    fig, ax = plt.subplots(figsize = (15,9), dpi=128)       # New line
-    point_numbers = range(rw.num_points)            
-    ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
-               cmap=plt.cm.Reds, edgecolors='none', s=2) 
-    ax.set_aspect('equal')
+#     # Plot the points in the walk.
+#     plt.style.use('classic')
+#     fig, ax = plt.subplots(figsize = (15,9), dpi=128)       # New line
+#     point_numbers = range(rw.num_points)            
+#     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, 
+#                cmap=plt.cm.Reds, edgecolors='none', s=2) 
+#     ax.set_aspect('equal')
     
-    # Emphasize the first and last points.
-    ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
-    ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s= 100)
+#     # Emphasize the first and last points.
+#     ax.scatter(0, 0, c='blue', edgecolors='none', s=100)
+#     ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s= 100)
 
-    # Remove the axes.  (series of plots with no axes)     
-    ax.get_xaxis().set_visible(False)   
-    ax.get_yaxis().set_visible(False)
+#     # Remove the axes.  (series of plots with no axes)     
+#     ax.get_xaxis().set_visible(False)   
+#     ax.get_yaxis().set_visible(False)
 
-    plt.show()
+#     plt.show()
 
-    keep_running = input("Make another walk? (y/n): ")
-    if keep_running == 'n':
-        break
+#     keep_running = input("Make another walk? (y/n): ")
+#     if keep_running == 'n':
+#         break
 
-# Output 1:  x-direction = 1, y_direction = 1, -1
-    # There was a thin horizontal line that moved along the x axis.
+# # Output 1:  x-direction = 1, y_direction = 1, -1
+#     # There was a thin horizontal line that moved along the x axis.
 
-# Output 2: x_direction = 1, y_direction = 1
-    # A diagonal line was formed between the axes, in Quadrant 1
-    # showing an increasing trend with every increase in x and y coordinates.
+# # Output 2: x_direction = 1, y_direction = 1
+#     # A diagonal line was formed between the axes, in Quadrant 1
+#     # showing an increasing trend with every increase in x and y coordinates.
 
-# Output 3: x direction = -1 and y direction = 1
-    # A diagonal line formed between the axes in Quadrant 2
-    # showing an increasing trend with every decrease in x values and increase in y values.
+# # Output 3: x direction = -1 and y direction = 1
+#     # A diagonal line formed between the axes in Quadrant 2
+#     # showing an increasing trend with every decrease in x values and increase in y values.
 
-# Output 4: x = -1, y = -1
-    # Decreasing trend diagonally towards the origin
+# # Output 4: x = -1, y = -1
+#     # Decreasing trend diagonally towards the origin
 
 
-# 15.5. Refactoring
+# # 15.5. Refactoring
 
-# Replaced x and y coordinate steps to just one step function in random_walk Class.
+# # Replaced x and y coordinate steps to just one step function in random_walk Class.
+
+
+'''ROLLING DICE WITH PLOTLY'''
+
+# Plotly produce interactive visualizations that will be displayed in a browser.
+# Visualizations will scale automatically to fit the viewer's screen.
+
+# PLOTLY EXPRESS, a subset of Plotly that focuses on generating
+# plots with as little code as possible
+
+# Eg. Analyze the results of rolling dice.
+# We'll try to determine which numbers are most likely to occur by generating a dataset
+# that represents rolling dice.
+
+# It also relates to many real-world situations where randomness plays a significant factor.
+
+
+'''INSTALLING PLOTLY'''
+
+# Plotly Express depends on pandas, which is a library for working efficiently with data.
+
+'Creating the Die Class'
+
+# from random import randint        # Pushed it to another die.py file
+
+# class Die:
+#     """A class representing a single die"""
+
+#     def __init__(self, num_sides = 6):
+#         """Assume a six sided die"""
+#         self.num_sides = num_sides
+    
+#     def roll(self):     # roll() method
+#         """Return a random value between 1 and number of sides."""
+#         return randint(1, self.num_sides)       # randint() function
+    
+
+# '''Rolling the die'''
+
+# from die import Die
+
+# # Create a D6
+# die = Die()
+
+# # Make some rolls and store results in a list.
+# results = []
+# for roll_num in range(100):
+#     result = die.roll()
+#     results.append(result)
+# print(results)
+
+'''Analyzing the Results'''
+
+from die import Die
+
+die = Die()
+
+results = []
+for roll_num in range(101):
+    result = die.roll()
+    results.append(result)
+
+# Analyzing the results
+
+frequencies =[]
+poss_results = range(1, die.num_sides + 1)
+for value in poss_results:
+    frequency = results.count(value)
+    frequencies.append(frequency)
+
+print(frequencies)
+
+# Making a histogram
+
+import plotly.express as px
