@@ -757,27 +757,328 @@
 #     results.append(result)
 # print(results)
 
-'''Analyzing the Results'''
+# '''Analyzing the Results'''
 
+# from die import Die
+
+# die = Die()
+
+# results = []
+# for roll_num in range(100):
+#     result = die.roll()
+#     results.append(result)
+
+# # Analyzing the results
+
+# frequencies =[]
+# poss_results = range(1, die.num_sides + 1)
+# for value in poss_results:
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+
+# print(frequencies)
+
+# # Making a histogram
+
+# import plotly.express as px #(px is conventional alias)
+# from die import Die
+
+# die = Die()
+
+# # Rolls
+# results =[]
+# for roll_num in range(1000):
+#     result = die.roll()
+#     results.append(result)
+
+# # Analyse rolls
+# frequencies = []
+# poss_results = range(1, die.num_sides +1)
+# for value in poss_results:
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+
+# # Visualize
+# fig = px.bar(x=poss_results, y=frequencies)     # bar graph use px.bar function
+# fig.show()
+
+# This chart is dynamic and interactive. 
+# If you change the size of your browser window,
+# the chart will resize to match the available space.
+
+
+# '''Customizing the plot - using OPTIONAL PARAMETERS'''
+
+# # Add an overall title and label for each axis
+
+# # Visualize
+# title = "Results of Rolling one D6 for 1000 times"
+# labels = {'x': 'Result', "y": "Frequency of Result"}
+# fig = px.bar(x=poss_results, y=frequencies, title=title, labels=labels)
+# fig.show()
+
+
+# '''Rolling two D6 dice'''
+
+# import plotly.express as px
+# from die import Die
+
+# # Create two dice
+# die_1 = Die()
+# die_2 = Die()
+
+# # Make some rolls and store results in a list.
+# results = []
+# for roll_num in range(500):
+#     result = die_1.roll() + die_2.roll()
+#     results.append(result)
+
+# # Analyze
+# max_result = die_1.num_sides + die_2.num_sides
+# poss_results = range(2, max_result + 1)
+# frequencies = []
+# for value in poss_results:
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+
+# # Visualize
+# title = "Results of Rolling two D6 for 500 times"
+# labels = {'x': 'Results', 'y': 'Frequency of results'}
+# fig = px.bar(x = poss_results, y= frequencies, title=title, labels=labels)
+
+# # Further customize chart (xaxis_dtick argument specifies the distance between tick marks on the x_axis)
+# fig.update_layout(xaxis_dtick=1)            # spacing between ticks to 1
+# fig.show()
+
+# # When modeling real-world situations, 
+# # it's best to write code that can easily model a variety of situations
+
+# # It's least likely to roll a 2 or 12 and
+# # most likely to roll a 7
+
+
+# '''Further Customizations'''
+
+# # the default layout settings for the x-axis leave some of the bars unlabeled.
+# # this chart would look better with all of the bars labeled
+
+# # The update_layout() method acts on the fig object, which represents the overall chart.
+# # Here we use the xaxis_dtick argument, which specifies the distance between tick marks
+# # on the x-axis. We set that spacing to 1, so that every bar is labeled.
+
+
+# '''Rolling Dice of Different sizes'''
+
+# import plotly.express as px
+# from die import Die
+
+# # Create two dice
+# die_1 = Die()
+# die_2 = Die(10)
+
+# # Make some rolls and store results in a list.
+# results = []
+# for roll_num in range(50000):
+#     result = die_1.roll() + die_2.roll()
+#     results.append(result)
+
+# # Analyze
+# max_result = die_1.num_sides + die_2.num_sides
+# poss_results = range(2, max_result + 1)
+# frequencies = []
+# for value in poss_results:
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+
+# # Visualize
+# title = "Results of Rolling a D6 and a D10 die for 50000 times"
+# labels = {'x': 'Results', 'y': 'Frequency of results'}
+# fig = px.bar(x = poss_results, y= frequencies, title=title, labels=labels)
+
+# # Further customize chart (xaxis_dtick argument specifies the distance between tick marks on the x_axis)
+# fig.update_layout(xaxis_dtick=1)            # spacing between ticks to 1
+# # fig.show()
+
+
+# '''
+# Possibilities - one way to roll the smallest value (1 and 1) and the largest value (6 and 10)
+# There are six ways to roll a 7, 8, 9, 10, or 11,
+# these are the most common results, and you’re equally likely to roll any one of them.
+
+# In just minutes, you can simulate a tremendous number of rolls using a large variety of dice.
+# '''
+
+# 'SAVING FIGURES'
+
+# # Replace the call fig.show() with fig.write_html()
+
+# fig.write_html('dice_visual_d6d10.html')        # Installed Live server to visualize the html file.
+
+# '''
+# 🧠 Think of it like this
+
+# Your Python code	        Output file
+# fig.show()	            Temporary display
+# fig.write_html()	    Permanent interactive file
+# '''
+
+
+# '''TRY IT YOURSELF'''
+
+# # 15.6 Two D8s
+
+# import plotly.express as px
+# from die import Die
+
+# # Create two dice
+# die_1 = Die(8)
+# die_2 = Die(8)
+
+# # Make some rolls and store results in a list.
+# results = []
+# for roll_num in range(100000):
+#     result = die_1.roll() + die_2.roll()
+#     results.append(result)
+
+# # Analyze
+# max_result = die_1.num_sides + die_2.num_sides
+# poss_results = range(2, max_result + 1)
+# frequencies = []
+# for value in poss_results:
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+
+# # Visualize
+# title = "Results of Rolling a two D8 dies for 100000 times"
+# labels = {'x': 'Results', 'y': 'Frequency of results'}
+# fig = px.bar(x = poss_results, y= frequencies, title=title, labels=labels)
+
+# # Further customize chart (xaxis_dtick argument specifies the distance between tick marks on the x_axis)
+# fig.update_layout(xaxis_dtick=1)            # spacing between ticks to 1
+# fig.show()
+
+
+
+# # 15.7 Three D6s
+
+# import plotly.express as px
+# from die import Die
+
+# # Create two dice
+# die_1 = Die()
+# die_2 = Die()
+# die_3 = Die()
+
+# # Make some rolls and store results in a list.
+# results = []
+# for roll_num in range(10000):
+#     result = die_1.roll() + die_2.roll() + die_3.roll()
+#     results.append(result)
+
+# # Analyze
+# max_result = die_1.num_sides + die_2.num_sides + die_3.num_sides
+# poss_results = range(3, max_result + 1)
+# frequencies = []
+# for value in poss_results:
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+
+# # Visualize
+# title = "Results of Rolling a three D6 dies for 10000 times"
+# labels = {'x': 'Results', 'y': 'Frequency of results'}
+# fig = px.bar(x = poss_results, y= frequencies, title=title, labels=labels)
+
+# # Further customize chart (xaxis_dtick argument specifies the distance between tick marks on the x_axis)
+# fig.update_layout(xaxis_dtick=1)            # spacing between ticks to 1
+# fig.show()
+
+
+# # 15.8  Multiplication
+
+# import plotly.express as px
+# from die import Die
+
+# # Create two dice
+# die_1 = Die()
+# die_2 = Die()
+
+# # Make some rolls and store results in a list.
+# results = []
+# for roll_num in range(100000):
+#     result = die_1.roll() * die_2.roll()
+#     results.append(result)
+
+# # Analyze
+# max_result = die_1.num_sides * die_2.num_sides
+# poss_results = range(1, max_result + 1)
+# frequencies = []
+# for value in poss_results:
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+
+# # Visualize
+# title = "Results of Rolling a two D6 dies for 100000 times"
+# labels = {'x': 'Results', 'y': 'Frequency of results'}
+# fig = px.bar(x = poss_results, y= frequencies, title=title, labels=labels)
+
+# # Further customize chart (xaxis_dtick argument specifies the distance between tick marks on the x_axis)
+# fig.update_layout(xaxis_dtick=1)            # spacing between ticks to 1
+# fig.show()
+
+# # 15.9. Die comprehensions
+
+# import plotly.express as px
+# from die import Die
+
+# # Create two dice
+# die_1 = Die()
+# die_2 = Die()
+
+# # Make some rolls and store results in the form of list comprehension.
+# results = [die_1.roll() * die_2.roll() for _ in range(100000)]
+
+# # Analyze
+# max_result = die_1.num_sides * die_2.num_sides
+# poss_results = range(1, max_result + 1)
+# frequencies = [results.count(value) for value in poss_results]
+
+# # Visualize
+# title = "Results of Rolling a two D6 dies for 100000 times"
+# labels = {'x': 'Results', 'y': 'Frequency of results'}
+# fig = px.bar(x = poss_results, y= frequencies, title=title, labels=labels)
+
+# # Further customize chart (xaxis_dtick argument specifies the distance between tick marks on the x_axis)
+# fig.update_layout(xaxis_dtick=1)            # spacing between ticks to 1
+# fig.show()
+
+
+# 15.10.    Practicing with Both libraries
+
+import matplotlib.pyplot as plt
+import plotly.express as px
 from die import Die
 
-die = Die()
+# Create two dice
+die_1 = Die()
+die_2 = Die()
 
-results = []
-for roll_num in range(101):
-    result = die.roll()
-    results.append(result)
+# Make some rolls and store results in the form of list comprehension.
+results = [die_1.roll() * die_2.roll() for _ in range(100000)]
 
-# Analyzing the results
+# Analyze
+max_result = die_1.num_sides * die_2.num_sides
+poss_results = range(1, max_result + 1)
+frequencies = [results.count(value) for value in poss_results]
 
-frequencies =[]
-poss_results = range(1, die.num_sides + 1)
-for value in poss_results:
-    frequency = results.count(value)
-    frequencies.append(frequency)
+# Labels
+title = "Results of Rolling a two D6 dies for 100000 times"
+labels = {'x': 'Results', 'y': 'Frequency of results'}
 
-print(frequencies)
-
-# Making a histogram
-
-import plotly.express as px
+# Chart
+fig, ax = plt.subplots()
+ax.scatter(x = poss_results, y = frequencies, s=100) 
+ax.set_title(title, fontsize = 24)
+ax.set_xlabel('Results', fontsize=12)
+ax.set_ylabel('Frequency of results', fontsize = 12)
+ax.tick_params(labelsize = 12)
+plt.show()
